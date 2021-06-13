@@ -3,5 +3,15 @@ h1 今日のタスク一覧
 = link_to 'タスク追加', new_task_path
 
 / タスク一覧
-- @tasks.each do |task|
-  = task.title
+table.table
+  thead
+  tr
+    td タイトル
+    td 締切日
+    td 詳細
+  - @tasks.each do |task|
+    tbody
+      tr
+        th = task.title
+        td = task.deadline
+        td = link_to '詳細', edit_task_path(task)
