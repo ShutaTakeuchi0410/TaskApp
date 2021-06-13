@@ -8,7 +8,7 @@ class TasksController < ApplicationController
   def create
     @task = current_user.tasks.new(task_params)
     if @task.save
-      redirect_to home_inbox_path
+      redirect_to home_path
     else
       render :new
     end
