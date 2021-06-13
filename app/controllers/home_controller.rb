@@ -13,6 +13,7 @@ class HomeController < ApplicationController
 
   # 締切日が今日以外で、プロジェクトの依存関係は問わないタスク一覧
   def future
+    @tasks = current_user.tasks.where("deadline > ?", get_today_date)
   end
 
   private
