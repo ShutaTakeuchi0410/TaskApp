@@ -1,0 +1,6 @@
+p 新規作成
+= form_with model: @task do |f|
+  = f.text_field :title, class: 'form-control'
+  = f.date_field :deadline, class: 'form-control'
+  = f.select :priority, [['優先度1', 1], ['優先度2', 2], ['優先度3', 3], ['優先度4', 4]], {selected: 4}, class: 'form-control'
+  = f.submit "提出する", class: 'btn btn-info'
