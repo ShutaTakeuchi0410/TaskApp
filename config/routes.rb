@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  root "home#index"
+  get 'home', to: 'home#index'
+  get 'home/inbox', to: 'home#inbox'
+  get 'home/future', to: 'home#future'
+
+  resources :tasks, except: [:index]
 end
