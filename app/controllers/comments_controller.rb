@@ -12,6 +12,12 @@ class CommentsController < ApplicationController
     end
   end
 
+  def destroy
+    comment = Comment.find(params[:id])
+    comment.destroy
+    redirect_to task_path(@task)
+  end
+
   private
 
   # 対象のタスクを取得する

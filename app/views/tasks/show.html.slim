@@ -1,22 +1,28 @@
-p 詳細、変更画面
+h1 詳細、変更画面
 
 = form_with model: @task, local: true do |f|
   = f.text_field :title, class: 'form-control'
   = f.date_field :deadline, class: 'form-control'
-  = f.select :priority, [['優先度1', 1], ['優先度2', 2], ['優先度3', 3], ['優先度4', 4]], {selected: 4}, class: 'form-control'
+  = f.select :priority, [['優先度1', 1], ['優先度2', 2], ['優先度3', 3], ['優先度4', 4]], {}, class: 'form-control'
+
+  / 詳細を追加
+  = f.text_area :detail, class: 'form-control', placeholder: '詳細'
+
   = f.submit "保存", class: 'btn btn-info'
 
 = link_to '削除', task_path(@task), method: :delete, data: { confirm: "削除してもよろしいですか？" }
 
 hr
 
-p コメント作成
+h1 コメント作成
 = form_with(model: [@task, @comment], local: true) do |f|
   = f.text_field :content, class: 'form-control'
   = f.file_field :file, class: 'form-control'
   = f.submit "送信", class: 'btn btn-info'
 
-p コメント一覧
+hr
+
+h1 コメント一覧
 table.table
   thead
   tr
@@ -29,7 +35,8 @@ table.table
         th = comment.content
         / pdfだったらリンクにする
         - if File.extname(comment.file.to_s) == '.pdf'
-          td = link_to 'PDFファイル'
+          td = link_to 'PDFファイルを開く', comment.file.to_s, target: :_blank
         - else 
           td = image_tag(comment.file.to_s)
-        td = link_to '削除'
+        td = link_to '削除', task_comment_path(task_id: @task, id: comment), method: :delete, data: { confirm: "削除してもよろしいですか？" }
+        
