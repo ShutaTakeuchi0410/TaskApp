@@ -8,6 +8,8 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to @task
     else
+      @task = Task.find(params[:task_id])
+      @comments = @task.comments
       render 'tasks/show'
     end
   end

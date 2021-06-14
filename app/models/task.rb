@@ -1,6 +1,7 @@
 class Task < ApplicationRecord
   validates :title, presence: true
-  validates :title, length: { maximum: 100 } #100文字までの制限
+  validates :title, length: { maximum: 100 }
+  validates :detail, length: { maximum: 500 }
   
   belongs_to :user
 
