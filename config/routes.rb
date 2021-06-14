@@ -5,5 +5,7 @@ Rails.application.routes.draw do
   get 'home/inbox', to: 'home#inbox'
   get 'home/future', to: 'home#future'
 
-  resources :tasks, except: [:index]
+  resources :tasks, except: [:index] do
+    resources :comments, only: [:create, :destroy]
+  end
 end
