@@ -15,10 +15,17 @@ class TasksController < ApplicationController
   end
 
   # タスクの詳細画面であるが、変更フォームやコメントの一覧、コメントフォームが存在する
-  def edit
+  def show
+    @task = Task.find(params[:id])
   end
 
   def update
+    @task = Task.find(params[:id])
+    if @task.update(task_params)
+      redirect_to @task
+    else
+      render :edit
+    end
   end
 
   def destroy
