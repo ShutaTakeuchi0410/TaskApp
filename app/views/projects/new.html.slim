@@ -1,0 +1,13 @@
+= render :partial => "layouts/templates/header"
+
+h1 プロジェクト追加
+= form_with model: @project do |f|
+
+  /エラーメッセージ
+  - if @project.errors.any?
+  ul
+    - @project.errors.full_messages.each do |message|
+      li.text-danger= message
+
+  = f.text_field :name, class: 'form-control'
+  = f.submit "追加", class: 'btn btn-info'

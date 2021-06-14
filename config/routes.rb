@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   resources :tasks, except: [:index] do
     resources :comments, only: [:create, :destroy]
   end
+  resources :projects, only: [:new, :create]
 end
