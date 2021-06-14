@@ -1,3 +1,5 @@
+= render :partial => "layouts/templates/header"
+
 h1 詳細、変更画面
 
 = form_with model: @task, local: true do |f|
@@ -28,6 +30,7 @@ table.table
   tr
     td 内容
     td ファイル
+    td 時間
     td 削除
   - @comments.each do |comment|
     tbody
@@ -38,5 +41,6 @@ table.table
           td = link_to 'PDFファイルを開く', comment.file.to_s, target: :_blank
         - else 
           td = image_tag(comment.file.to_s)
+        td = comment.created_at.strftime('%Y/%m/%d %H:%M:%S')
         td = link_to '削除', task_comment_path(task_id: @task, id: comment), method: :delete, data: { confirm: "削除してもよろしいですか？" }
         

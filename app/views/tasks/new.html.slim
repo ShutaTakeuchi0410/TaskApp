@@ -1,4 +1,6 @@
-p 新規作成
+= render :partial => "layouts/templates/header"
+
+h1 新規作成
 = form_with model: @task do |f|
   = f.text_field :title, class: 'form-control'
   = f.date_field :deadline, class: 'form-control'
