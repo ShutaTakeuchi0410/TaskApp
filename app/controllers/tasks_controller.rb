@@ -17,6 +17,12 @@ class TasksController < ApplicationController
   # タスクの詳細画面であるが、変更フォームやコメントの一覧、コメントフォームが存在する
   def show
     @task = Task.find(params[:id])
+
+    # コメント用のフォーム
+    @comment = Comment.new
+
+    # コメント一覧
+    @comments = @task.comments
   end
 
   def update

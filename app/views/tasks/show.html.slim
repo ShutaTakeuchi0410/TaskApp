@@ -7,3 +7,29 @@ p 詳細、変更画面
   = f.submit "保存", class: 'btn btn-info'
 
 = link_to '削除', task_path(@task), method: :delete, data: { confirm: "削除してもよろしいですか？" }
+
+hr
+
+p コメント作成
+= form_with(model: [@task, @comment], local: true) do |f|
+  = f.text_field :content, class: 'form-control'
+  = f.file_field :file, class: 'form-control'
+  = f.submit "送信", class: 'btn btn-info'
+
+p コメント一覧
+table.table
+  thead
+  tr
+    td 内容
+    td ファイル
+    td 削除
+  - @comments.each do |comment|
+    tbody
+      tr
+        th = comment.content
+        / pdfだったらリンクにする
+        - if File.extname(comment.file.to_s) == '.pdf'
+          td = link_to 'PDFファイル'
+        - else 
+          td = image_tag(comment.file.to_s)
+        td = link_to '削除'
