@@ -15,8 +15,6 @@ hr
 
 h4 プロジェクト一覧
 - current_user.projects.each do |project|
-  / バリデーションが実行されても１レコード分空欄ができてしまうから、表示させないようにしている
-  - break if project.id == nil
   = link_to project.name, project_path(project.id)
   br
 
