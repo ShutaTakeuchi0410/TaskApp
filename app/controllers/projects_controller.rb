@@ -18,6 +18,20 @@ class ProjectsController < ApplicationController
     @tasks = @project.tasks
   end
 
+  def destroy
+    project = Project.find(params[:id])
+
+    # taskのproject_idをnilにする
+    tasks = Task.where(project_id: project.id)
+    tasks.each do |task|
+      task.project_id = nil
+      task.save
+    end
+
+    project.destroy
+    redirect_to home_path
+  end
+
   private
 
   def project_params

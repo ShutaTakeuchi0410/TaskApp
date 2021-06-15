@@ -2,6 +2,7 @@
 
 h1 プロジェクト別一覧
 h3 = @project.name
+= link_to 'プロジェクトを削除', project_path(@project.id), method: :delete, data: { confirm: "削除してもよろしいですか？" }
 
 / タスク一覧
 table.table
