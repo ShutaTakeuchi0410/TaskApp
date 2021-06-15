@@ -9,5 +9,5 @@ h1 プロジェクト追加
     - @project.errors.full_messages.each do |message|
       li.text-danger= message
 
-  = f.text_field :name, class: 'form-control'
+  = f.text_field :name, class: 'form-control', placeholder: 'プロジェクト名'
   = f.submit "追加", class: 'btn btn-info'

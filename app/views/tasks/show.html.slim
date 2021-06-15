@@ -10,9 +10,13 @@ h1 詳細、変更画面
     - @task.errors.full_messages.each do |message|
       li.text-danger= message
       
-  = f.text_field :title, class: 'form-control'
+  = f.text_field :title, class: 'form-control', placeholder: 'タスク名'
   = f.date_field :deadline, class: 'form-control'
-  = f.select :priority, [['優先度1', 1], ['優先度2', 2], ['優先度3', 3], ['優先度4', 4]], {}, class: 'form-control'
+  = f.select :priority, [ ['優先度1', 1], ['優先度2', 2], ['優先度3', 3], ['優先度4', 4]], {}, class: 'form-control'
+
+  / プロジェクトが存在する場合はセレクトセレクトボックスを表示させる
+  - if current_user.projects.present?
+    = f.collection_select :project_id, current_user.projects, :id, :name, {include_blank: "プロジェクトを選択してください"}, class: 'form-control'
 
   / 詳細を追加
   = f.text_area :detail, class: 'form-control', placeholder: '詳細'
@@ -32,7 +36,7 @@ h1 コメント作成
     - @comment.errors.full_messages.each do |message|
       li.text-danger= message
 
-  = f.text_field :content, class: 'form-control'
+  = f.text_field :content, class: 'form-control', placeholder: 'コメント'
   = f.file_field :file, class: 'form-control'
   = f.submit "送信", class: 'btn btn-info'
 
