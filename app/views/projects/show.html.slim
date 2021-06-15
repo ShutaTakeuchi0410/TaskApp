@@ -1,0 +1,16 @@
+h1 プロジェクト別一覧
+h3 = @project.name
+
+/ タスク一覧
+table.table
+  thead
+  tr
+    td タイトル
+    td 締切日
+    td 詳細
+  - @tasks.each do |task|
+    tbody
+      tr
+        th = task.title
+        td = task.deadline
+        td = link_to '詳細', task_path(task)

@@ -10,7 +10,7 @@ hr
 
 h4 プロジェクト一覧
 - current_user.projects.each do |project|
-  = project.name
+  = link_to project.name, project_path(project.id)
   br
 
 hr
