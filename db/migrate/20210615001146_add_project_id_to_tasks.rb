@@ -1,4 +1,4 @@
-class AddProjectIdToTasks < ActiveRecord::Migration[6.1]
+  class AddProjectIdToTasks < ActiveRecord::Migration[6.1]
   def change
     add_column :tasks, :project_id, :integer
   end

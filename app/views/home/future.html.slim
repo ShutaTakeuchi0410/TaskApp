@@ -6,12 +6,10 @@ h1 今後のタスク
 table.table
   thead
   tr
-    td タイトル
+    td タスク
     td 締切日
-    td 詳細
   - @tasks.each do |task|
     tbody
       tr
-        th = task.title
+        th = link_to task.title, task_path(task)
         td = task.deadline
-        td = link_to '詳細', task_path(task)
