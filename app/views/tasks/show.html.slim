@@ -59,6 +59,6 @@ table.table
           td = link_to 'PDFファイルを開く', comment.file.to_s, target: :_blank
         - else 
           td = image_tag(comment.file.to_s)
-        td = comment.created_at.strftime('%Y/%m/%d %H:%M:%S')
+        td = comment.created_at.strftime('%-m/%-d %H:%M')
         td = link_to '削除', task_comment_path(task_id: @task, id: comment), method: :delete, data: { confirm: "削除してもよろしいですか？" }
         

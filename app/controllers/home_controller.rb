@@ -1,5 +1,4 @@
 class HomeController < ApplicationController
-  before_action :authenticate_user!
 
   # 締切日が今日でプロジェクトの依存関係は問わないタスク一覧
   def index
