@@ -8,12 +8,19 @@ table.table
   thead
   tr
     td タスク
+    td コメント
     td プロジェクト
   - @tasks.each do |task|
     tbody
       tr
+        / タスク名
         th = link_to task.title, task_path(task)
+
+        / コメント
+        td = task.comments.size
+        
+        / プロジェクト
         - if task.project.present?
-          td = link_to task.project.name
+          td = link_to task.project.name, project_path(task.project.id)
         - else 
           td なし

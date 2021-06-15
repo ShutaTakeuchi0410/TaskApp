@@ -7,11 +7,20 @@ table.table
   thead
   tr
     td タスク
-    td 締切日
-    td 詳細
+    td コメント
+    td プロジェクト
+
   - @tasks.each do |task|
     tbody
       tr
-        th = task.title
-        td = task.deadline
-        td = link_to '詳細', task_path(task)
+        / タスク名
+        th = link_to task.title, task_path(task)
+
+        / コメント
+        td = task.comments.size
+
+        / プロジェクト
+        - if task.project.present?
+          td = link_to task.project.name, project_path(task.project.id)
+        - else 
+          td なし

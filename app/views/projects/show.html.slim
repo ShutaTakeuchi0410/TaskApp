@@ -1,3 +1,5 @@
+= render :partial => "layouts/templates/header"
+
 h1 プロジェクト別一覧
 h3 = @project.name
 
@@ -5,12 +7,11 @@ h3 = @project.name
 table.table
   thead
   tr
-    td タイトル
+    td タスク
     td 締切日
-    td 詳細
   - @tasks.each do |task|
     tbody
       tr
-        th = task.title
-        td = task.deadline
-        td = link_to '詳細', task_path(task)
+        th = link_to task.title, task_path(task)
+        - if task.deadline.present?
+          td = task.deadline.strftime('%-m/%-d')
