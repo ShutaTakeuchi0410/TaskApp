@@ -1,0 +1,12 @@
+h1
+  | 検索結果
+table
+  - @tasks.each do |task|
+    tr
+      td
+        = task.detail
+      / td
+        = task.detail
+      / td
+      /   = taks.subjects.map{|subject_id| Subject.find(subject_id).name}.join(', ')
+= link_to 'トップ', root_path

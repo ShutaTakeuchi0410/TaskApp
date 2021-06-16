@@ -1,0 +1,4 @@
+= search_form_for(@q, url:search_result_path) do |f|
+  = f.label :detail_cont, 'タスク名'
+  = f.search_field :detail_cont
+  = f.submit
