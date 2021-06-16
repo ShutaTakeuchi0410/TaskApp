@@ -15,6 +15,11 @@ class TagsController < ApplicationController
     end
   end
 
+  def show
+    @tag = Tag.find(params[:id])
+    @tasks = @tag.tasks
+  end
+
   private
 
   def tag_params

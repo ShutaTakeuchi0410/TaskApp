@@ -23,7 +23,7 @@ hr
 
 h4 タグ一覧
 - current_user.tags.each do |tag|
-  = link_to tag.name
+  = link_to tag.name, tag_path(tag.id)
   br
 
 hr

@@ -1,0 +1,18 @@
+= render :partial => "layouts/templates/header"
+
+h1 タグ別一覧
+h3 = @tag.name
+= link_to 'タグを削除', tag_path(@tag.id), method: :delete, data: { confirm: "削除してもよろしいですか？" }
+
+/ タスク一覧
+table.table
+  thead
+  tr
+    td タスク
+    td 締切日
+  - @tasks.each do |task|
+    tbody
+      tr
+        th = link_to task.title, task_path(task)
+        - if task.deadline.present?
+          td = task.deadline.strftime('%-m/%-d')
