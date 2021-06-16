@@ -8,6 +8,7 @@ table.table
   tr
     td タスク
     td コメント
+    td タグ
     td プロジェクト
 
   - @tasks.each do |task|
@@ -18,6 +19,16 @@ table.table
 
         / コメント
         td = task.comments.size
+
+        / タグ
+        - if task.tags.present?
+          td
+            - task.tags.each do |tag|
+             = link_to tag.name, tag_path(tag.id)
+             br
+        - else 
+          td なし
+          
 
         / プロジェクト
         - if task.project.present?

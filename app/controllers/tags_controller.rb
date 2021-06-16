@@ -20,6 +20,12 @@ class TagsController < ApplicationController
     @tasks = @tag.tasks
   end
 
+  def destroy
+    tag = Tag.find(params[:id])
+    tag.destroy
+    redirect_to home_path
+  end
+
   private
 
   def tag_params
