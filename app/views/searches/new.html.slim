@@ -1,0 +1,19 @@
+= render :partial => "layouts/templates/header"
+
+h1 検索フォーム
+= form_with model: @search do |f|
+
+  /エラーメッセージ
+  - if @search.errors.any?
+  ul
+    - @search.errors.full_messages.each do |message|
+      li.text-danger= message
+
+  = f.text_field :word, class: 'form-control', placeholder: 'タイトル、詳しい説明、タグで検索'
+  = f.select :column_type, [['タイトル', 'title'], ['詳しい説明', 'detail'], ['タグ', 'tag']], {}, class: 'form-control'
+  = f.submit "追加", class: 'btn btn-info'
+
+h1 検索履歴
+- @searches.each do |search|
+  = link_to search.word
+  hr
