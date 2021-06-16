@@ -70,3 +70,5 @@ gem 'slim-rails'
 gem 'devise'
 
 gem 'carrierwave'
+
+gem 'ransack'

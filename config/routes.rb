@@ -9,8 +9,6 @@ Rails.application.routes.draw do
   end
   resources :projects, only: [:new, :create, :show, :destroy]
   resources :tags, only: [:new, :create, :show, :destroy]
-  resources :searches, only: [:new, :create]
-  get 'result', to: 'searches#show_result'
-
+  
   root to: 'home#index'
 end

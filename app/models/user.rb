@@ -8,5 +8,4 @@ class User < ApplicationRecord
   has_many :comments, :dependent => :destroy
   has_many :projects, :dependent => :destroy
   has_many :tags, :dependent => :destroy
-  has_many :searches, :dependent => :destroy
 end
