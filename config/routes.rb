@@ -9,4 +9,5 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :destroy]
   end
   resources :projects, only: [:new, :create, :show, :destroy]
+  resources :tags, only: [:new, :create, :show, :destroy]
 end
