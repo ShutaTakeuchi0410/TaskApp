@@ -16,6 +16,8 @@ class TasksController < ApplicationController
   # タスクの詳細画面であるが、変更フォームやコメントの一覧、コメントフォームが存在する
   def show
     @task = Task.find(params[:id])
+    # taskに紐づく中間テーブルの生成(これ無くても動いた)
+    @task.task_tags.build
 
     # コメント用のフォーム
     @comment = Comment.new
@@ -44,6 +46,6 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:title, :deadline, :priority, :detail, :project_id)
+    params.require(:task).permit(:title, :deadline, :priority, :detail, :project_id, { :tag_ids=> [] })
   end
 end

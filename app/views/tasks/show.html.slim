@@ -14,9 +14,14 @@ h1 詳細、変更画面
   = f.date_field :deadline, class: 'form-control'
   = f.select :priority, [ ['優先度1', 1], ['優先度2', 2], ['優先度3', 3], ['優先度4', 4]], {}, class: 'form-control'
 
-  / プロジェクトが存在する場合はセレクトセレクトボックスを表示させる
+  / プロジェクトが存在する場合はセレクトボックスを表示させる
   - if current_user.projects.present?
     = f.collection_select :project_id, current_user.projects, :id, :name, {include_blank: "プロジェクトを選択してください"}, class: 'form-control'
+  
+  / タグが存在する場合はチェックボックスを表示される
+  - if current_user.tags.present?
+    = f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |b|
+      = b.label { b.check_box + b.text }
 
   / 詳細を追加
   = f.text_area :detail, class: 'form-control', placeholder: '詳細'
