@@ -1,5 +1,10 @@
 class ProjectsController < ApplicationController
 
+  def show
+    @project = Project.find(params[:id])
+    @tasks = @project.tasks
+  end
+
   def new
     @project = Project.new
   end
@@ -13,11 +18,6 @@ class ProjectsController < ApplicationController
     else
       render :new
     end
-  end
-
-  def show
-    @project = Project.find(params[:id])
-    @tasks = @project.tasks
   end
 
   def destroy

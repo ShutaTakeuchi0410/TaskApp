@@ -1,5 +1,10 @@
 class TagsController < ApplicationController
 
+  def show
+    @tag = Tag.find(params[:id])
+    @tasks = @tag.tasks
+  end
+
   def new
     @tag = Tag.new
   end
@@ -13,11 +18,6 @@ class TagsController < ApplicationController
     else
       render :new
     end
-  end
-
-  def show
-    @tag = Tag.find(params[:id])
-    @tasks = @tag.tasks
   end
 
   def destroy

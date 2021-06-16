@@ -1,5 +1,18 @@
 class TasksController < ApplicationController
 
+  # タスクの詳細画面であるが、変更フォームやコメントの一覧、コメントフォームが存在する
+  def show
+    @task = Task.find(params[:id])
+    # taskに紐づく中間テーブルの生成(これ無くても動いた)
+    # @task.task_tags.buildx
+
+    # コメント用のフォーム
+    @comment = Comment.new
+
+    # コメント一覧
+    @comments = @task.comments
+  end
+  
   def new
     @task = Task.new
   end
@@ -13,18 +26,6 @@ class TasksController < ApplicationController
     end
   end
 
-  # タスクの詳細画面であるが、変更フォームやコメントの一覧、コメントフォームが存在する
-  def show
-    @task = Task.find(params[:id])
-    # taskに紐づく中間テーブルの生成(これ無くても動いた)
-    @task.task_tags.build
-
-    # コメント用のフォーム
-    @comment = Comment.new
-
-    # コメント一覧
-    @comments = @task.comments
-  end
 
   def update
     @task = Task.find(params[:id])
