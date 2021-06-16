@@ -34,3 +34,41 @@ table.table
           td = link_to task.project.name, project_path(task.project.id)
         - else 
           td なし
+
+h1 未完了タスク
+
+/ タスク一覧
+table.table
+  thead
+  tr
+    td タスク
+    td コメント
+    td タグ
+    td プロジェクト
+    td 締切日
+  - @expired_tasks.each do |task|
+    tbody
+      tr
+        / タスク名
+        th = link_to task.title, task_path(task)
+
+        / コメント
+        td = task.comments.size
+
+        / タグ
+        - if task.tags.present?
+          td
+            - task.tags.each do |tag|
+             = link_to tag.name, tag_path(tag.id)
+             br
+        - else 
+          td なし
+        
+        / プロジェクト
+        - if task.project.present?
+          td = link_to task.project.name, project_path(task.project.id)
+        - else 
+          td なし
+
+        / 締切日
+        td = task.deadline.strftime('%-m/%-d')

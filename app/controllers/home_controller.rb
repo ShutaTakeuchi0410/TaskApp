@@ -3,6 +3,7 @@ class HomeController < ApplicationController
   # 締切日が今日でプロジェクトの依存関係は問わないタスク一覧
   def index
     @tasks = current_user.tasks.where("deadline = ?", get_today_date)
+    @expired_tasks = current_user.tasks.where("deadline < ?", get_today_date)
   end
 
   # 締切日とプロジェクトが未定のタスク一覧
