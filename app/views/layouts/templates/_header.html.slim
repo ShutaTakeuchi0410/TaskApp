@@ -1,9 +1,7 @@
 / ログイン後のヘッダー
 = link_to 'ホーム', home_path, class: "btn btn-secondary"
+= link_to 'タスク追加', new_task_path, class: "btn btn-secondary"
 = link_to '検索', '', class: "btn btn-secondary"
-= link_to '追加', new_task_path, class: "btn btn-secondary"
-= link_to 'プロジェクト追加', new_project_path, class: "btn btn-secondary"
-= link_to 'タグ追加', new_tag_path, class: "btn btn-secondary"
 = link_to '分析', '', class: "btn btn-secondary"
 
 / 後ほどハンバーガーメニューにする項目
@@ -15,6 +13,8 @@
 hr
 
 h4 プロジェクト一覧
+= link_to 'プロジェクト追加', new_project_path, class: "btn btn-secondary"
+br
 - current_user.projects.each do |project|
   = link_to project.name, project_path(project.id)
   br
@@ -22,6 +22,8 @@ h4 プロジェクト一覧
 hr
 
 h4 タグ一覧
+= link_to 'タグ追加', new_tag_path, class: "btn btn-secondary"
+br
 - current_user.tags.each do |tag|
   = link_to tag.name, tag_path(tag.id)
   br
