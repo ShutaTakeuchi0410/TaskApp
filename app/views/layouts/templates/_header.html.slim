@@ -1,37 +1,20 @@
-/ ログイン後のヘッダー
-= link_to 'ホーム', home_path, class: "btn btn-secondary"
-= link_to 'タスク追加', new_task_path, class: "btn btn-secondary"
-= link_to '検索', search_path, class: "btn btn-secondary"
-= link_to '分析', '', class: "btn btn-secondary"
+nav.navbar.navbar-expand-lg.navbar-light.bg-light
+  #navbarSupportedContent.collapse.navbar-collapse
+    ul.navbar-nav.mr-auto
+      li.nav-item
+        = link_to 'ホーム', root_path, class: "nav-link"
+      li.nav-item
+        = link_to '検索', search_path, class: "nav-link btn btn-outline-primary"
 
-/ 後ほどハンバーガーメニューにする項目
-= current_user.email
-= link_to 'アカウント設定', edit_user_registration_path, class: "btn btn-secondary"
-= link_to '完了したタスク', '', class: "btn btn-secondary"
-= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "btn btn-secondary"
-
-hr
-
-h4 プロジェクト一覧
-= link_to 'プロジェクト追加', new_project_path, class: "btn btn-secondary"
-br
-- current_user.projects.each do |project|
-  = link_to project.name, project_path(project.id)
-  br
-
-hr
-
-h4 タグ一覧
-= link_to 'タグ追加', new_tag_path, class: "btn btn-secondary"
-br
-- current_user.tags.each do |tag|
-  = link_to tag.name, tag_path(tag.id)
-  br
-
-hr
-
-= link_to 'インボックス', home_inbox_path, class: "btn btn-info"
-= link_to '今日のタスク', home_path, class: "btn btn-info"
-= link_to '今後のタスク', home_future_path, class: "btn btn-info"
-
-hr
+    ul.navbar-nav
+      li.nav-item
+        = link_to '追加', new_task_path, class: "nav-link btn btn-outline-primary"
+      li.nav-item
+        = link_to '分析', '', class: "nav-link btn btn-outline-primary"
+      li.nav-item.dropdown
+        a#navbarDropdown.nav-link.dropdown-toggle.btn.btn-outline-primary aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button" 
+          = current_user.email
+        .dropdown-menu aria-labelledby="navbarDropdown" 
+          = link_to 'アカウント設定', edit_user_registration_path, class: "dropdown-item"
+          = link_to '完了したタスク', '', class: "dropdown-item"
+          = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "dropdown-item"
