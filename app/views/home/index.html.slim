@@ -1,20 +1,19 @@
-h1 今日のタスク
-h3 =Date.current.strftime('%-m/%-d')
+h5.mb-4 今月 月 #{Date.current.strftime('%-m/%-d')}
 
 / タスク一覧
-table.table
-  thead
-  tr
-    td タスク
-    td コメント
-    td タグ
-    td プロジェクト
+table.table.table-borderless.table-sm
   - @tasks.each do |task|
     tbody
       tr
         / タスク名
         th = link_to task.title, task_path(task)
-
+        
+        / プロジェクト
+        - if task.project.present?
+          td = link_to task.project.name, project_path(task.project.id)
+        - else 
+          td なし
+      tr
         / コメント
         td = task.comments.size
 
@@ -26,14 +25,6 @@ table.table
              br
         - else 
           td なし
-        
-        / プロジェクト
-        - if task.project.present?
-          td = link_to task.project.name, project_path(task.project.id)
-        - else 
-          td なし
-
-hr          
 
 h1 未完了タスク
 
