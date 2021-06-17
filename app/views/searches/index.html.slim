@@ -12,5 +12,5 @@ hr
 
 - if @histories.present?
   - @histories.each do |search|
-    = link_to search.word
+    = link_to search.word, "search/result?q%5Btitle_or_detail_or_tags_name_cont%5D=#{search.word}&commit=検索"
     br 

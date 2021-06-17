@@ -6,7 +6,7 @@
 
 / 後ほどハンバーガーメニューにする項目
 = current_user.email
-= link_to 'アカウント設定', '', class: "btn btn-secondary"
+= link_to 'アカウント設定', edit_user_registration_path, class: "btn btn-secondary"
 = link_to '完了したタスク', '', class: "btn btn-secondary"
 = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "btn btn-secondary"
 
