@@ -1,6 +1,0 @@
-/ 一覧の並び替えフォーム
-= form_with model: @tasks, url: search_path, method: :get, local: true do |form|
-  = form.select :keyword, [ ['締切日で並び替え', 'deadline'],
-                            ['優先度で並び替え', 'priority'],
-                          ]
-  = form.submit
