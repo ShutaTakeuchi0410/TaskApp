@@ -35,7 +35,16 @@ table.table
         - else 
           td なし
 
+hr          
+
 h1 未完了タスク
+
+/ 並び替えプルダウン
+= form_with url: root_path, local: true, method: :get do |f|
+  = f.select :sort_type, [ ['締切日で並び替え', 'deadline'], ['優先度で並び替え', 'priority']], {selected: @value}, class: 'form-control'  
+  = f.submit '並び替える'
+
+hr
 
 / タスク一覧
 table.table
