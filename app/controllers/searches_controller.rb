@@ -1,12 +1,24 @@
 class SearchesController < ApplicationController
   def index
-    @q = Task.ransack(params[:q])
-    # @tasks = @q.result(distinct: true)
+    @q = current_user.tasks.ransack(params[:q])
+
+    # 検索履歴の表示
+    @histories = current_user.searches.all.order(id: "DESC").limit(5)
   end
 
   def search
+    # 検索ワードの表示
+    @word = params[:q][:title_or_detail_or_tags_name_cont]
+
     @q = current_user.tasks.search(search_params)
     @tasks = @q.result(distinct: true)
+
+    # 検索履歴の保存
+    if @word.present?
+      @search = current_user.searches.new
+      @search.word = @word
+      @search.save
+    end
   end
 
   private

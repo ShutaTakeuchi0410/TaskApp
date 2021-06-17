@@ -1,7 +1,16 @@
-h1 検索
+= render :partial => "layouts/templates/header"
+
+h1 検索フォーム
 
 / タイトル、詳しい説明、タグ名が検索対象
 = search_form_for(@q, url:search_result_path) do |f|
-  = f.label :title_or_detail_or_tags_name_cont, 'タイトル、詳しい説明、タグ'
+  = f.label :title_or_detail_or_tags_name_cont, 'タイトル、詳しい説明、タグ'    
   = f.search_field :title_or_detail_or_tags_name_cont
   = f.submit
+
+hr
+
+- if @histories.present?
+  - @histories.each do |search|
+    = link_to search.word
+    br 
