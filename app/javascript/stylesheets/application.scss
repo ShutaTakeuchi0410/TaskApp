@@ -3,8 +3,22 @@ ul {
   list-style: none;
 }
 li{
-  margin: 0 20px;
+  margin: 0 10px;
 }
 header{
   width: 100%;
+}
+
+// ベース部分
+.main{
+  background-color: #D7EEFF;
+  height: 100%;
+}
+
+// siderbarテンプレート
+.task-list{
+  display:block;
+}
+.sidebar-title{
+  font-size: 18px;
 }
