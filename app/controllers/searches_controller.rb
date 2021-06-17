@@ -1,11 +1,11 @@
 class SearchesController < ApplicationController
   def index
     @q = Task.ransack(params[:q])
-    @tasks = @q.result(distinct: true)
+    # @tasks = @q.result(distinct: true)
   end
 
   def search
-    @q = Task.search(search_params)
+    @q = current_user.tasks.search(search_params)
     @tasks = @q.result(distinct: true)
   end
 
