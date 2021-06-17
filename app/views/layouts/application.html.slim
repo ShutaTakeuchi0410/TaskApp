@@ -23,7 +23,7 @@ html
           = render :partial => "layouts/templates/header"
     / ログイン状態であればヘッダーを追加
     - if user_signed_in?
-      .row.main
+      .row.main style="min-height: 100%;"
         .col-3.ml-4.bg-light.text-center.my-5
           aside
             = render :partial => "layouts/templates/sidebar"

@@ -8,11 +8,13 @@ li{
 header{
   width: 100%;
 }
-
+html,body{
+  height: 100%;
+}
 // ベース部分
 .main{
-  background-color: #D7EEFF;
-  height: 100%;
+  background-color:#DFE6ED;
+  min-height: auto;
 }
 
 // siderbarテンプレート
@@ -22,3 +24,5 @@ header{
 .sidebar-title{
   font-size: 18px;
 }
+
+// メインのフォントカラーは　#6558F
