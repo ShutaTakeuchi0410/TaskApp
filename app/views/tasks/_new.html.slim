@@ -1,0 +1,14 @@
+.modal-dialog role="document" 
+  .modal-content
+    = form_with model: @task do |f|
+
+      /エラーメッセージ
+      - if @task.errors.any?
+      ul
+        - @task.errors.full_messages.each do |message|
+          li.text-danger= message
+
+      = f.text_field :title, class: 'form-control', placeholder: 'タスク名'
+      = f.date_field :deadline, class: 'form-control'
+      = f.select :priority, [['優先度1', 1], ['優先度2', 2], ['優先度3', 3], ['優先度4', 4]], {selected: 4}, class: 'form-control'
+      = f.submit "保存", class: 'btn btn-info'

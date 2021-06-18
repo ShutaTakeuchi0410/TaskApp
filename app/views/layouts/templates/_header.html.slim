@@ -7,9 +7,8 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light style="height: 80px;"
         = link_to '検索', search_path, class: "nav-link btn btn", :style=>"color:#6558F5; border: 1px solid #6558F5;"
     ul.navbar-nav
       li.nav-item style="width: 80px;"
-        / = link_to '追加', new_task_path, :data => {:toggle=>"modal", :target => "#exampleModal", :whatever => "@mdo"}, class: "nav-link btn", :style=>"color:#6558F5; border: 1px solid #6558F5;"
-        = link_to '追加', new_task_path, class: "nav-link btn", :style=>"color:#6558F5; border: 1px solid #6558F5;"
-
+        / = link_to '追加', new_task_path, :data => {:toggle=>"modal", :target => "#exampleModal"}, class: "nav-link btn", :style=>"color:#6558F5; border: 1px solid #6558F5;"
+        = link_to '追加', new_task_path, remote: true, class: "nav-link btn", :style=>"color:#6558F5; border: 1px solid #6558F5;"
       li.nav-item style="width: 80px;"
         = link_to '分析', '', class: "nav-link btn", :style=>"color:#6558F5; border: 1px solid #6558F5;"
       li.nav-item.dropdown style="width: 180px;"
@@ -19,3 +18,5 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light style="height: 80px;"
           = link_to 'アカウント設定', edit_user_registration_path, class: "dropdown-item"
           = link_to '完了したタスク', '', class: "dropdown-item"
           = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "dropdown-item"
+
+#task-modal.modal.fade
