@@ -1,8 +1,8 @@
-= link_to 'インボックス', home_inbox_path, class: "task-list mt-4"
+= link_to 'インボックス', home_inbox_path, class: "task-list mt-4", :style=>"color:#6558F5;"
 br
-= link_to '今日のタスク', home_path, class: "task-list"
+= link_to '今日のタスク', home_path, class: "task-list", :style=>"color:#6558F5;"
 br
-= link_to '今後のタスク', home_future_path, class: "task-list"
+= link_to '今後のタスク', home_future_path, class: "task-list", :style=>"color:#6558F5;"
 br
 
 
@@ -10,17 +10,17 @@ br
 i.fas.fa-angle-down.mt-5.mb-4  プロジェクト
 
 - current_user.projects.each do |project|
-  = link_to project.name, project_path(project.id), class: 'task-list'
+  = link_to project.name, project_path(project.id), class: 'task-list', :style=>"color:#6558F5;"
   br
 
-= link_to 'プロジェクトを追加', new_project_path, class: "btn btn-outline-primary"
+= link_to 'プロジェクトを追加', new_project_path, class: "btn", :style=>"color:#6558F5; border: 1px solid #6558F5;"
 
 br
 
 / タグ関連
 i.fas.fa-angle-down.mt-5.mb-4  タグ
 - current_user.tags.each do |tag|
-  = link_to tag.name, tag_path(tag.id), class: 'task-list'
+  = link_to tag.name, tag_path(tag.id), class: 'task-list', :style=>"color:#6558F5;"
   br
 
-= link_to 'タグを追加', new_tag_path, class: "btn btn-outline-primary mb-4"
+= link_to 'タグを追加', new_tag_path, class: "btn mb-4", :style=>"color:#6558F5; border: 1px solid #6558F5;"
