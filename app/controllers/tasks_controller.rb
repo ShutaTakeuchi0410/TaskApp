@@ -19,11 +19,26 @@ class TasksController < ApplicationController
 
   def create
     @task = current_user.tasks.new(task_params)
-    if @task.save
-      redirect_to home_path
-    else
-      render :new
+    # if @task.save
+    #   redirect_to home_path
+    # else
+    #   render :new
+    # end
+
+    respond_to do |format|
+      if @task.save
+        format.html { redirect_to @task, notice: 'User was successfully created.' }
+        format.json { render :show, status: :created, location: @task }
+        # 追加
+        format.js { @status = "success" }
+      else
+        format.html { render :new }
+        format.json { render json: @task.errors, status: :unprocessable_entity }
+        # 追加
+        format.js { @status = "fail" }
+      end
     end
+    
   end
 
 

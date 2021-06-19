@@ -1,6 +1,6 @@
 .modal-dialog role="document" 
   .modal-content
-    = form_with model: @task do |f|
+    = form_with(model: @task, remote: true) do |f|
 
       /エラーメッセージ
       - if @task.errors.any?
