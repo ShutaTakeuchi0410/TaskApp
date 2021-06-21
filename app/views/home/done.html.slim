@@ -1,0 +1,35 @@
+h5 完了したタスク
+/ タスク一覧
+table.table
+  thead
+  tr
+    td チェック
+    td タスク
+    td コメント
+    td タグ
+    td プロジェクト
+
+  - @tasks.each do |task|
+      tr
+        td = check_box_tag '', '', task.status, data: {remote: true, url: url_for(controller: :home, action: :toggle, id: task.id), method: "POST"}     
+        / タスク名
+        th = link_to task.title, task_path(task)
+
+        / コメント
+        td = task.comments.size
+
+        / タグ
+        - if task.tags.present?
+          td
+            - task.tags.each do |tag|
+             = link_to tag.name, tag_path(tag.id)
+             br
+        - else 
+          td なし
+          
+
+        / プロジェクト
+        - if task.project.present?
+          td = link_to task.project.name, project_path(task.project.id)
+        - else 
+          td なし

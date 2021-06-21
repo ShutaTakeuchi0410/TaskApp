@@ -16,7 +16,7 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light style="height: 80px;"
           = current_user.email
         .dropdown-menu aria-labelledby="navbarDropdown"
           = link_to 'アカウント設定', edit_user_registration_path, class: "dropdown-item"
-          = link_to '完了したタスク', '', class: "dropdown-item"
+          = link_to '完了したタスク', home_done_path, class: "dropdown-item"
           = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "dropdown-item"
 
 / タスク作成のモーダル

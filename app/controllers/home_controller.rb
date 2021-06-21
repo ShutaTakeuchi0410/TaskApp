@@ -36,7 +36,7 @@ class HomeController < ApplicationController
     end
   end
 
-
+  # タスクの達成、未達成のステータスを変更する(Ajax)
   def toggle
     # render nothing: true
     @task = Task.find(params[:id])
@@ -44,6 +44,11 @@ class HomeController < ApplicationController
     # @task.status = !@task.status
     @task.status = !@task.status
     @task.save
+  end
+
+  # 達成済みのタスクを一覧表示
+  def done
+    @tasks = current_user.tasks.where(status: true)
   end
 
   private
