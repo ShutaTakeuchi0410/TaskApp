@@ -1,14 +1,39 @@
-.modal-dialog role="document" 
+.modal-dialog.modal-lg role="document" 
   .modal-content
-    = form_with(model: @task, local: false) do |f|
+    .col-10.offset-1.mt-4.mb-3 
+      button.close aria-label="Close" data-dismiss="modal" type="button" style="float: right"
+        span aria-hidden="true"  ×
+      
+      br
+      
+      p タスクを追加
+      = form_with(model: @task, local: false) do |f|
 
-      /エラーメッセージ
-      - if @task.errors.any?
-      ul
-        - @task.errors.full_messages.each do |message|
-          li.text-danger= message
+        / /エラーメッセージ
+        / - if @task.errors.any?
+        / ul
+        /   - @task.errors.full_messages.each do |message|
+        /     li.text-danger= message
 
-      = f.text_field :title, class: 'form-control', placeholder: 'タスク名'
-      = f.date_field :deadline, class: 'form-control'
-      = f.select :priority, [['優先度1', 1], ['優先度2', 2], ['優先度3', 3], ['優先度4', 4]], {selected: 4}, class: 'form-control'
-      = f.submit "保存", class: 'btn btn-info'
+        = f.text_field :title, class: 'form-control mb-4', placeholder: 'タイトル'
+
+        .row
+          .col-4
+            = f.date_field :deadline, class: 'form-control mb-4', include_blank: '選択してください'
+          
+          .col-4
+            = f.select :priority, [['優先度1', 1], ['優先度2', 2], ['優先度3', 3], ['優先度4', 4]], {selected: 4}, class: 'form-control mb-4'
+
+          .col-4      
+            / プロジェクトが存在する場合はセレクトボックスを表示させる
+            - if current_user.projects.present?
+              = f.collection_select :project_id, current_user.projects, :id, :name, {include_blank: "プロジェクトを選択してください"}, class: 'form-control mb-4'
+        
+        / タグが存在する場合はチェックボックスを表示される
+        - if current_user.tags.present?
+          = f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |b|
+            = b.label { b.check_box + b.text }
+            br
+
+        = f.submit "保存", class: 'btn submit-button', :style=>"background-color:#6558F5; color: white;"
+
