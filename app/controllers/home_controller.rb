@@ -4,17 +4,17 @@ class HomeController < ApplicationController
   def index
     # 優先度が高い順(締め切りは今日だから)
     # 今日のタスク
-    @tasks = current_user.tasks.where("deadline = ?", get_today_date).order(priority: "ASC")
+    @tasks = current_user.tasks.where("deadline = ?", get_today_date).where(status: false).order(priority: "ASC")
 
     # 未完了のタスク
     # デフォルトの並び替えは優先度が高い順
     # 並び替え用の分岐(デフォルト：締め切り日が今日に近い順)
     if params[:sort_type] == 'priority'
       @value = 'priority'
-      @expired_tasks = current_user.tasks.where("deadline < ?", get_today_date).order(priority: "ASC")
+      @expired_tasks = current_user.tasks.where("deadline < ?", get_today_date).where(status: false).order(priority: "ASC")
     else
       @value = 'deadline'
-      @expired_tasks = current_user.tasks.where("deadline < ?", get_today_date).order(deadline: "ASC")
+      @expired_tasks = current_user.tasks.where("deadline < ?", get_today_date).where(status: false).order(deadline: "ASC")
     end
   end
 
@@ -29,10 +29,10 @@ class HomeController < ApplicationController
     # 並び替え用の分岐(デフォルト：締め切り日が近い順)
     if params[:sort_type] == 'priority'
       @value = 'priority'
-      @tasks = current_user.tasks.where("deadline > ?", get_today_date).order(priority: "ASC")
+      @tasks = current_user.tasks.where("deadline > ?", get_today_date).where(status: false).order(priority: "ASC")
     else
       @value = 'deadline'
-      @tasks = current_user.tasks.where("deadline > ?", get_today_date).order(deadline: "ASC")
+      @tasks = current_user.tasks.where("deadline > ?", get_today_date).where(status: false).order(deadline: "ASC")
     end
   end
 

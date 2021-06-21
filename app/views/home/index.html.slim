@@ -5,6 +5,7 @@ table.table.table-borderless.table-sm
   - @tasks.each do |task|
     tbody
       tr
+        td = check_box_tag '', '', task.status, data: {remote: true, url: url_for(controller: :home, action: :toggle, id: task.id), method: "POST"}     
         / タスク名
         th = link_to task.title, task_path(task)
         
@@ -39,6 +40,7 @@ hr
 table.table
   thead
   tr
+    td チェック
     td タスク
     td コメント
     td タグ
@@ -47,6 +49,8 @@ table.table
   - @expired_tasks.each do |task|
     tbody
       tr
+        td = check_box_tag '', '', task.status, data: {remote: true, url: url_for(controller: :home, action: :toggle, id: task.id), method: "POST"}     
+
         / タスク名
         th = link_to task.title, task_path(task)
 
