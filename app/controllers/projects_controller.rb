@@ -13,10 +13,23 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params)
     @project.user_id = current_user.id
 
-    if @project.save
-      redirect_to home_path
-    else
-      render :new
+    # if @project.save
+    #   redirect_to home_path
+    # else
+    #   render :new
+
+    respond_to do |format|
+      if @project.save
+        format.html { redirect_to root_path, notice: 'User was successfully created.' }
+        # format.json { render :show, status: :created, location: @task }
+        # 追加
+        format.js { @status = "success" }
+      else
+        format.html { render :new }
+        # format.json { render json: @task.errors, status: :unprocessable_entity }
+        # 追加
+        format.js { @status = "fail" }
+      end
     end
   end
 
