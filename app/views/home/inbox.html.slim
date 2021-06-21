@@ -9,7 +9,7 @@ table.table
     td プロジェクト
 
   - @tasks.each do |task|
-    tbody
+    tbody = check_box_tag '', '', task.done, {'data-id' => task.id, 'data-project_id' => task.project_id}
       tr
         / タスク名
         th = link_to task.title, task_path(task)
