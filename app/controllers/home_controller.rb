@@ -36,6 +36,10 @@ class HomeController < ApplicationController
     end
   end
 
+
+  def change_task_
+  end
+
   private
 
   # 本日の日付を取得
