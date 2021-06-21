@@ -31,9 +31,13 @@ html
         .col-8.mt-5
           main
             = yield
+
+    / ログインしていない
     - else
-      main
-        = yield
+      .row.main style="min-height: 100%;"
+        .col-6.offset-3
+          main
+            = yield
 
 
     / jQuery
