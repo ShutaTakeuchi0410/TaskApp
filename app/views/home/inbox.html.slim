@@ -3,14 +3,15 @@ h5 インボックス
 table.table
   thead
   tr
+    td チェック
     td タスク
     td コメント
     td タグ
     td プロジェクト
 
   - @tasks.each do |task|
-    tbody = check_box_tag '', '', task.done, {'data-id' => task.id, 'data-project_id' => task.project_id}
       tr
+        td = check_box_tag '', '', task.status, data: {remote: true, url: url_for(controller: :home, action: :toggle, id: task.id), method: "POST"}     
         / タスク名
         th = link_to task.title, task_path(task)
 

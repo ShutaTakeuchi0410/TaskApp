@@ -20,7 +20,7 @@ class HomeController < ApplicationController
 
   # 締切日とプロジェクトが未定のタスク一覧
   def inbox
-      @tasks = current_user.tasks.where(deadline: nil).order(priority: "ASC")
+      @tasks = current_user.tasks.where(deadline: nil).where(status: false).order(priority: "ASC")
   end
 
   # 締切日が今日以外で、プロジェクトの依存関係は問わないタスク一覧
@@ -37,7 +37,13 @@ class HomeController < ApplicationController
   end
 
 
-  def change_task_
+  def toggle
+    # render nothing: true
+    @task = Task.find(params[:id])
+    # タスクのdoneの値をひっくり返す
+    # @task.status = !@task.status
+    @task.status = !@task.status
+    @task.save
   end
 
   private
