@@ -13,10 +13,24 @@ class TagsController < ApplicationController
     @tag = Tag.new(tag_params)
     @tag.user_id = current_user.id
 
-    if @tag.save
-      redirect_to home_path
-    else
-      render :new
+    # if @tag.save
+    #   redirect_to home_path
+    # else
+    #   render :new
+    # end
+
+    respond_to do |format|
+      if @tag.save
+        format.html { redirect_to root_path, notice: 'User was successfully created.' }
+        # format.json { render :show, status: :created, location: @task }
+        # 追加
+        format.js { @status = "success" }
+      else
+        format.html { render :new }
+        # format.json { render json: @task.errors, status: :unprocessable_entity }
+        # 追加
+        format.js { @status = "fail" }
+      end
     end
   end
 
