@@ -7,6 +7,7 @@ class SearchesController < ApplicationController
   end
 
   def search
+
     # 検索ワードの表示
     @word = params[:q][:title_or_detail_or_tags_name_cont]
 
@@ -19,6 +20,9 @@ class SearchesController < ApplicationController
       @search = current_user.searches.new
       @search.word = @word
       @search.save
+      # NOTE: 検索履歴は最新5件までを残すようにするので、6件目以降は削除する
+      # current_user.searches.order(created_at: :desc).offset(5).delete_all if current_user.searches.size >= 6
+      # current_user.keep_latest_5_logs!
     end
   end
 

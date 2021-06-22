@@ -20,9 +20,10 @@
           / タスク名
           th = link_to task.title, task_path(task), :style=>"color:#6558F5;"
           / 締切日
-          td.text-right
-            | 締切日 
-            = task.deadline.strftime('%-m/%-d')
+          - if task.deadline.present?
+            td.text-right
+              | 締切日 
+              = task.deadline.strftime('%-m/%-d')
     
   table.table.table-borderless.table-sm.mb-4 style="margin-top: -15px;"
     tbody

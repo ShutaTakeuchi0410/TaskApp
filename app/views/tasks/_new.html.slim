@@ -9,11 +9,11 @@
       p タスクを追加
       = form_with(model: @task, local: false) do |f|
 
-        / /エラーメッセージ
-        / - if @task.errors.any?
-        / ul
-        /   - @task.errors.full_messages.each do |message|
-        /     li.text-danger= message
+        /エラーメッセージ
+        - if @task.errors.any?
+        ul
+          - @task.errors.full_messages.each do |message|
+            li.text-danger= message
 
         = f.text_field :title, class: 'form-control mb-4', placeholder: 'タイトル'
 
