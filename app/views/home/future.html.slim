@@ -6,8 +6,8 @@
     / 並び替えプルダウン
     = form_with url: home_future_path, local: true, method: :get do |f|
       div style="display:inline-flex"
-        = f.select :sort_type, [ ['締切日順', 'deadline'], ['優先度順', 'priority']], {selected: @value}, class: 'form-control'
-        = f.submit '並び替え', class: 'btn', :style=>"background-color:#6558F5; color: white;"
+        = f.select :sort_type, [ ['締切日順', 'deadline'], ['優先度順', 'priority']], {selected: @value}, class: 'form-control form-control-sm'
+        = f.submit '並び替え', class: 'btn btn-sm', :style=>"background-color:#6558F5; color: white;"
 
 / タスク一覧
 - @tasks.each do |task|
