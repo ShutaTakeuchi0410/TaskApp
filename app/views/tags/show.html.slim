@@ -1,7 +1,7 @@
 / タグ別
 .row.mb-2
   .col-4
-    h5 = @tag.name
+    h5.page-title = @tag.name
   .col-4
     / 並び替えプルダウン
     = form_with url: tag_path(@tag.id), local: true, method: :get do |f|

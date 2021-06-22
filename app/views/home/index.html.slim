@@ -1,5 +1,5 @@
 / 今日のタスク
-h5.mb-4.home-title 今月 月 #{Date.current.strftime('%-m/%-d')}
+h5.mb-4.page-title 今月 月 #{Date.current.strftime('%-m/%-d')}
 
 - @tasks.each do |task|
   table.table.table-borderless.table-sm
@@ -29,7 +29,7 @@ h5.mb-4.home-title 今月 月 #{Date.current.strftime('%-m/%-d')}
           td.text-right = link_to task.project.name, project_path(task.project.id), :style=>"color:#6558F5;"
 
 / 未完了のタスク
-.row.mb-4 style="margin-top: 150px;"
+.row.mb-4.page-title style="margin-top: 150px;"
   .col-6
     h5 未完了のタスク
   .col-6

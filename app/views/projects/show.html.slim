@@ -1,7 +1,7 @@
 / プロジェクト別
 .row.mb-2
   .col-4
-    h5 = @project.name
+    h5.page-title = @project.name
   .col-4
     / 並び替えプルダウン
     = form_with url: project_path(@project.id), local: true, method: :get do |f|
