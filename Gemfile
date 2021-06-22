@@ -79,3 +79,5 @@ gem 'jquery-rails'
 gem 'rails-ujs'
 
 gem 'mousetrap-rails', github: 'kugaevsky/mousetrap-rails'
+
+gem 'jquery-hotkeys-rails'
