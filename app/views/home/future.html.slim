@@ -11,7 +11,7 @@
 
 / タスク一覧
 - @tasks.each do |task|
-  table.table.table-borderless.table-sm style="margin-top: 10px;"
+  table.table.table-borderless.table-sm style="margin-top: 16px;"
     tbody
         tr
           td style="width: 5px;" = check_box_tag '', '', task.status, data: {remote: true, url: url_for(controller: :home, action: :toggle, id: task.id), method: "POST"}     
