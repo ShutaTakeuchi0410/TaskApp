@@ -7,7 +7,7 @@ table.table.table-borderless.table-sm
       tr
         td = check_box_tag '', '', task.status, data: {remote: true, url: url_for(controller: :home, action: :toggle, id: task.id), method: "POST"}     
         / タスク名
-        th = link_to task.title, task_path(task)
+        td = link_to task.title, task_path(task)
         
         / プロジェクト
         - if task.project.present?
