@@ -2,7 +2,15 @@ class TagsController < ApplicationController
 
   def show
     @tag = Tag.find(params[:id])
-    @tasks = @tag.tasks
+
+    # 並び替え
+    if params[:sort_type] == 'priority'
+      @value = 'priority'
+      @tasks = @tag.tasks.where(status: false).order(priority: "ASC")
+    else
+      @value = 'deadline'
+      @tasks = @tag.tasks.where(status: false).order(deadline: "ASC")
+    end
   end
 
   def new

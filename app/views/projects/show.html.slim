@@ -1,16 +1,40 @@
-h1 プロジェクト別一覧
-h3 = @project.name
 = link_to 'プロジェクトを削除', project_path(@project.id), method: :delete, data: { confirm: "削除してもよろしいですか？" }
 
+/ 今後のタスク
+.row.mb-2
+  .col-6
+    h5 = @project.name
+  .col-6
+    / 並び替えプルダウン
+    = form_with url: project_path(@project.id), local: true, method: :get do |f|
+      div style="display:inline-flex"
+        = f.select :sort_type, [ ['締切日順', 'deadline'], ['優先度順', 'priority']], {selected: @value}, class: 'form-control'
+        = f.submit '並び替え', class: 'btn', :style=>"background-color:#6558F5; color: white;"
+
 / タスク一覧
-table.table
-  thead
-  tr
-    td タスク
-    td 締切日
-  - @tasks.each do |task|
+- @tasks.each do |task|
+  table.table.table-borderless.table-sm style="margin-top: 10px;"
+    tbody
+        tr
+          td style="width: 5px;" = check_box_tag '', '', task.status, data: {remote: true, url: url_for(controller: :home, action: :toggle, id: task.id), method: "POST"}     
+          / タスク名
+          th = link_to task.title, task_path(task), :style=>"color:#6558F5;"
+          / 締切日
+          td.text-right
+            | 締切日 
+            = task.deadline.strftime('%-m/%-d')
+    
+  table.table.table-borderless.table-sm.mb-4 style="margin-top: -15px;"
     tbody
       tr
-        th = link_to task.title, task_path(task)
-        - if task.deadline.present?
-          td = task.deadline.strftime('%-m/%-d')
+        td style="width: 160px;"
+          i.fas.fa-comment.text-secondary.ml-4.mr-2 style="font-size: 20px;"
+          = task.comments.size 
+
+        / タグ
+        - if task.tags.present?
+          td
+            / ４つ以上タグを指定してる場合は、3つまでの表示
+            - task.tags.each_with_index do |tag, i|
+              = link_to tag.name, tag_path(tag.id), class: "ml-3", :style=>"color:#6558F5;"
+              - break if i == 2

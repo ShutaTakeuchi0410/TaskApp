@@ -2,7 +2,15 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
-    @tasks = @project.tasks
+
+    # 並び替え
+    if params[:sort_type] == 'priority'
+      @value = 'priority'
+      @tasks = @project.tasks.where(status: false).order(priority: "ASC")
+    else
+      @value = 'deadline'
+      @tasks = @project.tasks.where(status: false).order(deadline: "ASC")
+    end
   end
 
   def new
