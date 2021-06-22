@@ -29,7 +29,7 @@ h5.mb-4.home-title 今月 月 #{Date.current.strftime('%-m/%-d')}
           td.text-right = link_to task.project.name, project_path(task.project.id), :style=>"color:#6558F5;"
 
 / 未完了のタスク
-.row style="margin-top: 150px;"
+.row.mb-4 style="margin-top: 150px;"
   .col-6
     h5 未完了のタスク
   .col-6
