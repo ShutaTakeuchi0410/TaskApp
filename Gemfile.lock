@@ -1,3 +1,9 @@
+GIT
+  remote: https://github.com/kugaevsky/mousetrap-rails.git
+  revision: 4ae2a7d76537ca13df2bb1b269604fb2e42c873c
+  specs:
+    mousetrap-rails (1.4.6)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -342,6 +348,7 @@ DEPENDENCIES
   jquery-rails
   letter_opener_web
   listen (~> 3.3)
+  mousetrap-rails!
   pg (~> 1.1)
   pry-byebug
   pry-rails
