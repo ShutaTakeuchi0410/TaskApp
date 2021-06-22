@@ -15,8 +15,8 @@
         / 検索履歴
         p.mt-3 履歴
         - if @histories.present?
-        - @histories.each do |search|
-          = link_to search.word, "/search/result?q%5Btitle_or_detail_or_tags_name_cont%5D=#{search.word}&commit=検索", style: 'color: #6558F5;'
-          br
+          - @histories.each do |search|
+            = link_to search.word, "/search/result?q%5Btitle_or_detail_or_tags_name_cont%5D=#{search.word}&commit=検索", style: 'color: #6558F5;'
+            br
 
         = f.submit "検索", class: 'btn submit-button', :style=>"background-color:#6558F5; color: white;"
