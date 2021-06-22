@@ -10,7 +10,7 @@
 
         /エラーメッセージ
         - if @project.errors.any?
-        ul
+        ul.text-left
           - @project.errors.full_messages.each do |message|
             li.text-danger= message
 
