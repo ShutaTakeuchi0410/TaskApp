@@ -1,41 +1,38 @@
-h1 検索結果
-h2 = @word
+/ 検索結果
+h5
+  | 検索結果：
+  = @tasks.size
+  | 件
+h5.mb-4 = @word
 
 / タスク一覧
-table.table
-  thead
-  tr
-    td タスク
-    td コメント
-    td タグ
-    td プロジェクト
-    td 締切日
-  - @tasks.each do |task|
+- @tasks.each do |task|
+  table.table.table-borderless.table-sm style="margin-top: 10px;"
+    tbody
+        tr
+          td style="width: 5px;" = check_box_tag '', '', task.status, data: {remote: true, url: url_for(controller: :home, action: :toggle, id: task.id), method: "POST"}     
+          / タスク名
+          th = link_to task.title, task_path(task), :style=>"color:#6558F5;"
+          / 締切日
+          td.text-right
+            | 締切日 
+            = task.deadline.strftime('%-m/%-d')
+    
+  table.table.table-borderless.table-sm.mb-4 style="margin-top: -15px;"
     tbody
       tr
-        / タスク名
-        th = link_to task.title, task_path(task)
-
-        / コメント
-        td = task.comments.size
+        td style="width: 160px;"
+          i.fas.fa-comment.text-secondary.ml-4.mr-2 style="font-size: 20px;"
+          = task.comments.size 
 
         / タグ
         - if task.tags.present?
           td
-            - task.tags.each do |tag|
-             = link_to tag.name, tag_path(tag.id)
-             br
-        - else 
-          td なし
-        
+            / ４つ以上タグを指定してる場合は、3つまでの表示
+            - task.tags.each_with_index do |tag, i|
+              = link_to tag.name, tag_path(tag.id), class: "ml-3", :style=>"color:#6558F5;"
+              - break if i == 2
+
         / プロジェクト
         - if task.project.present?
-          td = link_to task.project.name, project_path(task.project.id)
-        - else 
-          td なし
-
-        / 締切日
-        - if task.deadline.present?
-          td = task.deadline.strftime('%-m/%-d')
-        - else 
-          td なし
+          td.text-right = link_to task.project.name, project_path(task.project.id), :style=>"color:#6558F5;"

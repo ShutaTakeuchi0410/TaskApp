@@ -10,7 +10,8 @@ class SearchesController < ApplicationController
     # 検索ワードの表示
     @word = params[:q][:title_or_detail_or_tags_name_cont]
 
-    @q = current_user.tasks.search(search_params)
+    # 完了済みでないタスクのみを表示
+    @q = current_user.tasks.where(status: false).search(search_params)
     @tasks = @q.result(distinct: true)
 
     # 検索履歴の保存
