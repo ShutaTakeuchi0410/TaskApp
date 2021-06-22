@@ -20,9 +20,14 @@ class SearchesController < ApplicationController
       @search = current_user.searches.new
       @search.word = @word
       @search.save
+
+      # ↓原山さんアドバイス↓
       # NOTE: 検索履歴は最新5件までを残すようにするので、6件目以降は削除する
       # current_user.searches.order(created_at: :desc).offset(5).delete_all if current_user.searches.size >= 6
       # current_user.keep_latest_5_logs!
+
+      # 6件目以降の検索履歴が不要なため、レコードを削除する処理
+      current_user.searches.keep_latest_5_logs
     end
   end
 
