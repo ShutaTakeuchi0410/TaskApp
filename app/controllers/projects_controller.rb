@@ -36,7 +36,8 @@ class ProjectsController < ApplicationController
         format.html { render :new }
         # format.json { render json: @task.errors, status: :unprocessable_entity }
         # 追加
-        format.js { @status = "fail" }
+        # format.js { @status = "fail" }
+        format.js { render :new }
       end
     end
   end
