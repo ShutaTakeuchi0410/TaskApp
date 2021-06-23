@@ -1,2 +1,3 @@
 h5.mb-4.page-title 過去7日間に完了したタスク数
-= column_chart @chart
+.mt-5
+  = column_chart @chart, id: "column-chart", width: "100%", height: "500px"
