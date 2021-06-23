@@ -8,6 +8,9 @@
       p.text-left プロジェクトを追加
       = form_with(model: @project, local: false) do |f|
 
+        / 追加の成功時
+        .text-primary = flash[:notice]
+
         /エラーメッセージ
         - if @project.errors.any?
         ul.text-left

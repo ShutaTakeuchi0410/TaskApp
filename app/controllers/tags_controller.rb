@@ -29,10 +29,10 @@ class TagsController < ApplicationController
 
     respond_to do |format|
       if @tag.save
-        format.html { redirect_to root_path, notice: 'User was successfully created.' }
+        format.html { redirect_to new_tag_path, notice: 'タグを一件追加しました' }
         # format.json { render :show, status: :created, location: @task }
         # 追加
-        format.js { @status = "success" }
+        # format.js { @status = "success" }
       else
         format.html { render :new }
         # format.json { render json: @task.errors, status: :unprocessable_entity }
