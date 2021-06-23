@@ -13,7 +13,7 @@ i.fas.fa-angle-down.mt-5.mb-4  プロジェクト
   = link_to project.name, project_path(project.id), class: 'task-list', :style=>"color:#6558F5;"
   br
 
-= link_to 'プロジェクトを追加', new_project_path, remote: true, class: "btn", :style=>"color:#6558F5; border: 1px solid #6558F5;"
+= link_to 'プロジェクトを追加', new_project_path, remote: true, class: "btn", :style=>"color:#6558F5; border: 1px solid #6558F5;", id: 'project-add-shortcut'
 
 br
 
@@ -23,7 +23,7 @@ i.fas.fa-angle-down.mt-5.mb-4  タグ
   = link_to tag.name, tag_path(tag.id), class: 'task-list', :style=>"color:#6558F5;"
   br
 
-= link_to 'タグを追加', new_tag_path, remote: true, class: "btn mb-4", :style=>"color:#6558F5; border: 1px solid #6558F5;"
+= link_to 'タグを追加', new_tag_path, remote: true, class: "btn mb-4", :style=>"color:#6558F5; border: 1px solid #6558F5;", id: 'tag-add-shortcut'
 
 / プロジェクト作成のModalの表示
 #project-modal.modal.fade

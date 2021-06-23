@@ -216,8 +216,40 @@ shortcut = {
 	}
 }
 
-shortcut.add("Ctrl+B",function() {
-  alert("Hello world !");
+// 検索ショートカット
+shortcut.add("F",function() {
+  var a = document.getElementById("search-shortcut");
+  a.click();
+},{
+  'type':'keydown',
+  'propagate':true,
+  'target':document
+});
+
+// タスク追加ショートカット
+shortcut.add("N",function() {
+  var a = document.getElementById("task-add-shortcut");
+  a.click();
+},{
+  'type':'keydown',
+  'propagate':true,
+  'target':document
+});
+
+// プロジェクト追加ショートカット
+shortcut.add("P",function() {
+  var a = document.getElementById("project-add-shortcut");
+  a.click();
+},{
+  'type':'keydown',
+  'propagate':true,
+  'target':document
+});
+
+// タグ追加ショートカット
+shortcut.add("T",function() {
+  var a = document.getElementById("project-add-shortcut");
+  a.click();
 },{
   'type':'keydown',
   'propagate':true,
