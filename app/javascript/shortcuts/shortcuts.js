@@ -216,6 +216,8 @@ shortcut = {
 	}
 }
 
+// getElementByIdの引数に指定したいリンク(link_to)のidを指定する
+// 本来そのリンクをクリックするから最後にclick関数？を書く
 // 検索ショートカット
 shortcut.add("Ctrl+F",function() {
   var a = document.getElementById("search-shortcut");
