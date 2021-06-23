@@ -20,3 +20,6 @@ Rails.start()
 ActiveStorage.start()
 
 import "../stylesheets/application"
+
+// ショートカット用のjsファイル
+require ('shortcuts/shortcuts')
