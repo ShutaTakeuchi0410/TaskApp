@@ -1,0 +1,9 @@
+ja:
+  activerecord:
+    attributes:
+      task:
+        title: タイトル
+      project:
+        name: タイトル
+      tag:
+        name: タイトル
