@@ -16,5 +16,8 @@ Rails.application.routes.draw do
   get 'search', to: 'searches#index'
   get 'search/result', to: 'searches#search'
 
+  # グラフ
+  get 'graph', to: 'graphs#index'
+
   root to: 'home#index'
 end

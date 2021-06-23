@@ -101,6 +101,7 @@ GEM
       marcel (~> 1.0.0)
       mini_mime (>= 0.1.3)
       ssrf_filter (~> 1.0)
+    chartkick (4.0.4)
     coderay (1.1.3)
     concurrent-ruby (1.1.9)
     crass (1.0.6)
@@ -123,6 +124,8 @@ GEM
     ffi (1.15.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    groupdate (5.2.2)
+      activesupport (>= 5)
     hpricot (0.8.6)
     html2slim (0.2.0)
       hpricot
@@ -342,9 +345,11 @@ DEPENDENCIES
   bullet
   byebug
   carrierwave
+  chartkick
   database_rewinder
   devise
   factory_bot_rails
+  groupdate
   html2slim
   jbuilder (~> 2.7)
   jquery-hotkeys-rails

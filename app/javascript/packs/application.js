@@ -10,6 +10,9 @@
 
 //= require jquery-hotkeys
 
+//= require chartkick
+//= require Chart.bundle
+
 import Rails from "@rails/ujs"
 // import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
@@ -23,3 +26,5 @@ import "../stylesheets/application"
 
 // ショートカット用のjsファイル
 require ('shortcuts/shortcuts')
+
+import "chartkick/chart.js"

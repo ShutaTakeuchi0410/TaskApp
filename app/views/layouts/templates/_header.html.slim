@@ -10,7 +10,7 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light style="height: 80px;"
         / = link_to '追加', new_task_path, :data => {:toggle=>"modal", :target => "#exampleModal"}, class: "nav-link btn", :style=>"color:#6558F5; border: 1px solid #6558F5;"
         = link_to '追加', new_task_path, remote: true, class: "nav-link btn", :style=>"color:#6558F5; border: 1px solid #6558F5;", id: 'task-add-shortcut'
       li.nav-item style="width: 80px;"
-        = link_to '分析', '', class: "nav-link btn", :style=>"color:#6558F5; border: 1px solid #6558F5;"
+        = link_to '分析', graph_path, class: "nav-link btn", :style=>"color:#6558F5; border: 1px solid #6558F5;"
       li.nav-item.dropdown style="width: 180px;"
         a#navbarDropdown.nav-link.dropdown-toggle.btn aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button" style="color: black; border: 1px solid gray;"
           = current_user.email
