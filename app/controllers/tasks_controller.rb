@@ -27,7 +27,7 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.save
-        format.html { redirect_to new_task_path, notice: 'User was successfully created.' }
+        format.html { redirect_to new_task_path, notice: 'タスクを一件追加しました' }
         format.json { render :show, status: :created, location: @task }
         # 追加
         # format.js { @status = "success" }

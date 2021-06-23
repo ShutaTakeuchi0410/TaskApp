@@ -9,6 +9,9 @@
       p タスクを追加
       = form_with(model: @task, local: false) do |f|
 
+        / 成功時
+        .text-primary = flash[:notice]
+
         /エラーメッセージ
         - if @task.errors.any?
         ul
