@@ -26,7 +26,7 @@ i.fas.fa-angle-down.mt-5.mb-4  タグ
 = link_to 'タグを追加', new_tag_path, remote: true, class: "btn mb-4", :style=>"color:#6558F5; border: 1px solid #6558F5;", id: 'tag-add-shortcut'
 
 / プロジェクト作成のModalの表示
-#project-modal.modal.fade
+#project-modal.modal.fade tabindex="-1"
 
 / タグ作成のModalの表示
-#tag-modal.modal.fade
+#tag-modal.modal.fade tabindex="-1"

@@ -248,7 +248,7 @@ shortcut.add("P",function() {
 
 // タグ追加ショートカット
 shortcut.add("T",function() {
-  var a = document.getElementById("project-add-shortcut");
+  var a = document.getElementById("tag-add-shortcut");
   a.click();
 },{
   'type':'keydown',

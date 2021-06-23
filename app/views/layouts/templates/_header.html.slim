@@ -20,7 +20,7 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light style="height: 80px;"
           = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "dropdown-item"
 
 / タスク作成のモーダル
-#task-modal.modal.fade
+#task-modal.modal.fade tabindex="-1"
 
 / 検索のモーダル
-#search-modal.modal.fade
+#search-modal.modal.fade tabindex="-1"
