@@ -6,8 +6,9 @@
     / 並び替えプルダウン
     = form_with url: tag_path(@tag.id), local: true, method: :get do |f|
       div style="display:inline-flex"
-        = f.select :sort_type, [ ['締切日順', 'deadline'], ['優先度順', 'priority']], {selected: @value}, class: 'form-control form-control-sm'
-        = f.submit '並び替え', class: 'btn btn-sm', :style=>"background-color:#6558F5; color: white;"
+        / 学習
+        = f.select :sort_type, [ ['締切日順', 'deadline'], ['優先度順', 'priority']], {selected: @value}, class: 'form-control form-control-sm', onchange: 'submit(this.form);' 
+        / = f.submit '並び替え', class: 'btn btn-sm', :style=>"background-color:#6558F5; color: white;"
   .col-4 
     = link_to 'このタグを削除', tag_path(@tag.id), method: :delete, data: { confirm: "削除してもよろしいですか？" }, :style=>"color:#6558F5;"
 
