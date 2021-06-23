@@ -2,7 +2,6 @@ class GraphsController < ApplicationController
   require "date"
   # グラフの表示
   def index
-    # @chart = { "2020-01-01" => 100, "2020-01-02" => 80, "2020-01-03" => 110, "2020-01-04" => 130, "2020-01-05" => 90 }
     d = Date.today
     date_1 = d - 1
     date_2 = d - 2
@@ -12,8 +11,14 @@ class GraphsController < ApplicationController
     date_6 = d - 6
     date_7 = d - 7
 
-    puts '************************'
-    puts date_1.class
-    puts '************************'
+    date_1_count = current_user.tasks.where(done_date: date_1).count
+    date_2_count = current_user.tasks.where(done_date: date_2).count
+    date_3_count = current_user.tasks.where(done_date: date_3).count
+    date_4_count = current_user.tasks.where(done_date: date_4).count
+    date_5_count = current_user.tasks.where(done_date: date_5).count
+    date_6_count = current_user.tasks.where(done_date: date_6).count
+    date_7_count = current_user.tasks.where(done_date: date_7).count
+
+    @chart = { date_7 => date_7_count, date_6 => date_6_count, date_5 => date_5_count, date_4 => date_4_count, date_3 => date_3_count, date_2 => date_2_count, date_1 => date_1_count, }
   end
 end
