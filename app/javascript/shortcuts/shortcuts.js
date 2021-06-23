@@ -217,7 +217,7 @@ shortcut = {
 }
 
 // 検索ショートカット
-shortcut.add("F",function() {
+shortcut.add("Ctrl+F",function() {
   var a = document.getElementById("search-shortcut");
   a.click();
 },{
@@ -227,7 +227,7 @@ shortcut.add("F",function() {
 });
 
 // タスク追加ショートカット
-shortcut.add("N",function() {
+shortcut.add("Ctrl+N",function() {
   var a = document.getElementById("task-add-shortcut");
   a.click();
 },{
@@ -237,7 +237,7 @@ shortcut.add("N",function() {
 });
 
 // プロジェクト追加ショートカット
-shortcut.add("P",function() {
+shortcut.add("Ctrl+P",function() {
   var a = document.getElementById("project-add-shortcut");
   a.click();
 },{
@@ -247,7 +247,7 @@ shortcut.add("P",function() {
 });
 
 // タグ追加ショートカット
-shortcut.add("T",function() {
+shortcut.add("Ctrl+T",function() {
   var a = document.getElementById("tag-add-shortcut");
   a.click();
 },{
