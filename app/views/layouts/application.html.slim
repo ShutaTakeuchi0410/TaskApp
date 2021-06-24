@@ -21,6 +21,8 @@ html
       .row
         header
           = render :partial => "layouts/templates/header"
+
+
     / ログイン状態であればヘッダーを追加
     - if user_signed_in?
       .row.main style="min-height: 100%;"

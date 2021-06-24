@@ -46,7 +46,7 @@ class TasksController < ApplicationController
   def update
     @task = Task.find(params[:id])
     if @task.update(task_params)      
-      redirect_to @task
+      redirect_to @task, notice: 'タスク内容を変更しました'
     else
       @comment = Comment.new
       @comments = @task.comments  

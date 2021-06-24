@@ -2,6 +2,11 @@
 
 = form_with model: @task, local: true do |f|
 
+  / フラッシュメッセージ
+  .notifications.text-center.text-primary
+    - flash.each do |key, value|
+      = content_tag(:div, value, class: key)
+
   /エラーメッセージ
   - if @task.errors.any?
   ul
