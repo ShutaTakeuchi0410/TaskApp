@@ -13,7 +13,8 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light style="height: 80px;"
         = link_to '分析', graph_path, class: "nav-link btn", :style=>"color:#6558F5; border: 1px solid #6558F5;"
       li.nav-item.dropdown style="width: 180px;"
         a#navbarDropdown.nav-link.dropdown-toggle.btn aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button" style="color: black; border: 1px solid gray;"
-          = current_user.email
+          / アカウント名をメールアドレスのユーザID部分にしている
+          = current_user.email.rpartition("@")[0]
         .dropdown-menu aria-labelledby="navbarDropdown"
           = link_to 'アカウント設定', edit_user_registration_path, class: "dropdown-item"
           = link_to '完了したタスク', home_done_path, class: "dropdown-item"

@@ -16,12 +16,21 @@
         <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: 'パスワード確認', class: 'form-control' %>
       </div>
 
-      <div class="actions text-center my-5 mb-4">
+      <div class="actions text-center mb-4 mt-5">
         <%= f.submit "登録する", class: 'btn', style: "background-color:#6558F5; color: white; display: inline-block;"%>
       </div>
     <% end %>
     
     <hr width=80% style="border-width: 2px;">
+
+    <div class="actionsm text-center my-4">
+      <%- if devise_mapping.omniauthable? %>
+        <%- resource_class.omniauth_providers.each do |provider| %>
+          <%= link_to "Googleアカウントで登録する", omniauth_authorize_path(resource_name, provider), method: :post, class: 'btn', style: "background-color:#6558F5; color: white; display: inline-block;" %><br />
+        <% end %>
+      <% end %>
+    </div>
+
   </div>
 </div>
 
