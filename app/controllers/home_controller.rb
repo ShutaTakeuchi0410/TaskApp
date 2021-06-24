@@ -56,7 +56,7 @@ class HomeController < ApplicationController
 
   # 達成済みのタスクを一覧表示
   def done
-    @tasks = current_user.tasks.where(status: true)
+    @tasks = current_user.tasks.where(status: true).page(params[:page])
   end
 
   private

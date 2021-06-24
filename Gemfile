@@ -89,3 +89,5 @@ gem 'groupdate'
 # google認証関連
 gem 'omniauth-google-oauth2'
 gem 'omniauth-rails_csrf_protection'
+
+gem 'kaminari'

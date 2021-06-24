@@ -32,3 +32,6 @@ h5.mb-4.page-title 完了したタスク
         / プロジェクト
         - if task.project.present?
           td.text-right = link_to task.project.name, project_path(task.project.id), :style=>"color:#6558F5;"
+
+
+= paginate @tasks
