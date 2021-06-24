@@ -57,7 +57,7 @@ class TasksController < ApplicationController
   def destroy
     task = Task.find(params[:id])
     task.destroy
-    redirect_to home_path
+    redirect_to home_path, notice: 'タスクを一件削除しました'
   end
 
   private

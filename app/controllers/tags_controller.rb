@@ -46,7 +46,7 @@ class TagsController < ApplicationController
   def destroy
     tag = Tag.find(params[:id])
     tag.destroy
-    redirect_to home_path
+    redirect_to home_path, notice: 'タグを一件削除しました'
   end
 
   private

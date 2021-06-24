@@ -53,7 +53,7 @@ class ProjectsController < ApplicationController
     end
 
     project.destroy
-    redirect_to home_path
+    redirect_to home_path, notice: 'プロジェクトを一件削除しました'
   end
 
   private

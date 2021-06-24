@@ -1,3 +1,8 @@
+/ フラッシュメッセージ
+.notifications.text-center.text-primary
+  - flash.each do |key, value|
+    = content_tag(:div, value, class: key)
+
 / 今日のタスク
 h5.mb-4.page-title 今月 月 #{Date.current.strftime('%-m/%-d')}
 
