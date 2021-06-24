@@ -39,4 +39,4 @@ yarn-debug.log*
 
 memo.txt
 
-/.env
+.env
