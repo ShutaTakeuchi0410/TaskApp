@@ -85,3 +85,7 @@ gem 'jquery-hotkeys-rails'
 # グラフ関連
 gem 'chartkick'
 gem 'groupdate'
+
+# google認証関連
+gem 'omniauth-google-oauth2'
+gem 'omniauth-rails_csrf_protection'

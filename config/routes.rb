@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: {
+    # deviseの階層を編集した場合は適宜pathを編集してください
+    omniauth_callbacks: "users/omniauth_callbacks"
+  }
 
   get 'home', to: 'home#index'
   get 'home/inbox', to: 'home#inbox'
