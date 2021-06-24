@@ -2,10 +2,6 @@
   <%= link_to "ログインはこちら", new_session_path(resource_name), style: "color: #6558F5; display: inline-block;" %><br />
 <% end %>
 
-<%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-  <%= link_to "パスワードを忘れた場合はこちら", new_password_path(resource_name), class: 'mb-3', style: "color: #6558F5; display: inline-block;" %><br />
-<% end %>
-
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
   <%= link_to "新規登録はこちら", new_registration_path(resource_name), style: "color: #6558F5;" %><br />
 <% end %>

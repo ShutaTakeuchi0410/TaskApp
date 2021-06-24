@@ -38,3 +38,5 @@ yarn-debug.log*
 /public/uploads
 
 memo.txt
+
+.env
