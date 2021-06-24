@@ -10,10 +10,4 @@ class Task < ApplicationRecord
   has_many :comments, :dependent => :destroy
   has_many :task_tags, :dependent => :destroy
   has_many :tags, through: :task_tags
-
-  before_create do
-    run_xxxxxxxxxx
-  end
-
-  after_update :run_xxxxxxxxxxxxxx
 end
