@@ -25,6 +25,7 @@ ActiveStorage.start()
 import "../stylesheets/application"
 
 // ショートカット用のjsファイル
-require ('shortcuts/shortcuts')
+// require ('shortcuts/shortcuts')
+import "./shortcuts.js"
 
 import "chartkick/chart.js"
