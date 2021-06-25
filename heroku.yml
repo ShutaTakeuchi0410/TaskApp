@@ -1,0 +1,9 @@
+build:
+  docker:
+    web: Dockerfile
+  config:
+    NODE_VERSION: '14-alpine'
+    RUBY_VERSION: '2.7-alpine'
+    YARN_VERSION: '1.22.5'
+run:
+  web: bundle exec puma -C config/puma.rb
