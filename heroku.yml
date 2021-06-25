@@ -1,3 +1,9 @@
+setup:
+  addons:
+    - plan: heroku-postgresql
+      as: DATABASE
+  config:
+    RAILS_ENV: production
 build:
   docker:
     web: Dockerfile
