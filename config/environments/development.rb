@@ -3,6 +3,7 @@ require "active_support/core_ext/integer/time"
 Rails.application.configure do
   # ==========================
   # Added
+  config.hosts.clear
   # ==========================
 
   # IP White list
