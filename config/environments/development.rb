@@ -62,8 +62,8 @@ Rails.application.configure do
     port: 587,
     domain: "domain.of.sender.net",  # <===== ぶっちゃけ何でもいい
     authentication: "plain",
-    user_name: "shuta.takeuchi.080410@gmail.com", # <===== 送信するメールアカウント
-    password: "uctceyuiclvsxodf",    # <===== 送信するメールアカウントのパスワード
+    user_name: ENV['MAIL_ADDRESS'], # <===== 送信するメールアカウント
+    password: ENV['MAIL_PASSWORD'],    # <===== 送信するメールアカウントのパスワード
     enable_starttls_auto: true
   }
 
