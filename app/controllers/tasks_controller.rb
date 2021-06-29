@@ -60,6 +60,7 @@ class TasksController < ApplicationController
     redirect_to home_path, notice: 'タスクを一件削除しました'
   end
 
+
   private
 
   def task_params
