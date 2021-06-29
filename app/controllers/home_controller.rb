@@ -3,7 +3,8 @@ class HomeController < ApplicationController
   # 締切日が今日でプロジェクトの依存関係は問わないタスク一覧
   def index
     # メール関連
-    TaskMailer.greeting.deliver
+    # TaskMailer.send_mail
+    TaskMailer.send_mail_users
 
     # 優先度が高い順(締め切りは今日だから)
     # 今日のタスク

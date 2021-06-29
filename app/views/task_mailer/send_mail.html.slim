@@ -1,0 +1,29 @@
+p #{@user.email.rpartition("@")[0]}さん、おはようございます。
+
+br
+
+/ 本日のタスク関連
+- if @today_tasks.size > 0
+  p 本日はタスクが#{@today_tasks.size}件あります。
+  - @today_tasks.each do |task|
+    - if task.project.present?
+      p ・#{task.title}【優先度#{task.priority}】【#{task.project.name}】
+    - else
+      p ・#{task.title}【優先度#{task.priority}】
+  p 全て実行を目指して本日も頑張りましょう。
+- else 
+  p 本日のタスクは0件です
+
+br
+
+/ 締切日を過ぎたタスク
+- if @expired_tasks.size > 0
+  p 締切日が過ぎたタスクが#{@expired_tasks.size}件あります。
+  - @expired_tasks.each do |task|
+    - if task.project.present?
+      p ・#{task.title}【締切日#{task.deadline.strftime('%-m/%-d')}】【#{task.project.name}】
+    - else
+      p ・#{task.title}【締切日#{task.deadline.strftime('%-m/%-d')}】
+- else 
+  p 締切日を過ぎたタスクはありません。
+  p この調子で本日も頑張っていきましょう。
