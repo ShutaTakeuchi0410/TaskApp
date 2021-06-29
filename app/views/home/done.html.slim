@@ -1,37 +1,38 @@
 h5.mb-4.page-title 完了したタスク
 
-/ タスク一覧
-- @tasks.each do |task|
-  table.table.table-borderless.table-sm style="margin-top: 10px;"
-    tbody
-        tr
-          td style="width: 5px;" = check_box_tag '', '', task.status, data: {remote: true, url: url_for(controller: :home, action: :toggle, id: task.id), method: "POST"}     
-          / タスク名
-          th = link_to task.title, task_path(task), :style=>"color:#6558F5;"
-          - if task.deadline.present?
-            / 締切日
-            td.text-right
-              | 締切日 
-              = task.deadline.strftime('%-m/%-d')
+/ / タスク一覧
+/ - @tasks.each do |task|
+/   table.table.table-borderless.table-sm style="margin-top: 10px;"
+/     tbody
+/         tr
+/           td style="width: 5px;" = check_box_tag '', '', task.status, data: {remote: true, url: url_for(controller: :home, action: :toggle, id: task.id), method: "POST"}     
+/           / タスク名
+/           th = link_to task.title, task_path(task), :style=>"color:#6558F5;"
+/           - if task.deadline.present?
+/             / 締切日
+/             td.text-right
+/               | 締切日 
+/               = task.deadline.strftime('%-m/%-d')
     
-  table.table.table-borderless.table-sm.mb-4 style="margin-top: -15px;"
-    tbody
-      tr
-        td style="width: 160px;"
-          i.fas.fa-comment.text-secondary.ml-4.mr-2 style="font-size: 20px;"
-          = task.comments.size 
+/   table.table.table-borderless.table-sm.mb-4 style="margin-top: -15px;"
+/     tbody
+/       tr
+/         td style="width: 160px;"
+/           i.fas.fa-comment.text-secondary.ml-4.mr-2 style="font-size: 20px;"
+/           = task.comments.size 
 
-        / タグ
-        - if task.tags.present?
-          td
-            / ４つ以上タグを指定してる場合は、3つまでの表示
-            - task.tags.each_with_index do |tag, i|
-              = link_to tag.name, tag_path(tag.id), class: "ml-3", :style=>"color:#6558F5;"
-              - break if i == 2
+/         / タグ
+/         - if task.tags.present?
+/           td
+/             / ４つ以上タグを指定してる場合は、3つまでの表示
+/             - task.tags.each_with_index do |tag, i|
+/               = link_to tag.name, tag_path(tag.id), class: "ml-3", :style=>"color:#6558F5;"
+/               - break if i == 2
 
-        / プロジェクト
-        - if task.project.present?
-          td.text-right = link_to task.project.name, project_path(task.project.id), :style=>"color:#6558F5;"
+/         / プロジェクト
+/         - if task.project.present?
+/           td.text-right = link_to task.project.name, project_path(task.project.id), :style=>"color:#6558F5;"
 
+= render :partial => "layouts/templates/tasks"
 
 = paginate @tasks
