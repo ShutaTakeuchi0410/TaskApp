@@ -1,0 +1,4 @@
+- if @task.status
+  | $(".task-#{@task.id}").addClass("task-done");
+- else
+  | $(".task-#{@task.id}").removeClass("task-done");

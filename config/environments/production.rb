@@ -74,12 +74,12 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address: "smtp.gmail.com",  # <======= 送信メールサーバーのアドレスを入れる
+    address: "smtp.gmail.com",  
     port: 587,
-    domain: "domain.of.sender.net",  # <===== ぶっちゃけ何でもいい
+    domain: "domain.of.sender.net",
     authentication: "plain",
-    user_name: ENV['MAIL_ADDRESS'], # <===== 送信するメールアカウント
-    password: ENV['MAIL_PASSWORD'],    # <===== 送信するメールアカウントのパスワード
+    user_name: ENV['MAIL_ADDRESS'], 
+    password: ENV['MAIL_PASSWORD'], 
     enable_starttls_auto: true
   }
 

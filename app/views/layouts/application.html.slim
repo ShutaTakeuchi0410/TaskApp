@@ -14,25 +14,24 @@ html
 
     / FontAwesome
     link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet" /
-  body.container
-
+  body
     / ログイン状態であればヘッダーを追加
     - if user_signed_in?
-      .row
-        header
-          = render :partial => "layouts/templates/header"
+      .container
+        .row
+          header
+            = render :partial => "layouts/templates/header"
 
-
-    / ログイン状態であればヘッダーを追加
-    - if user_signed_in?
-      .row.main style="min-height: 100%;"
-        .col-3.ml-4.bg-light.text-center.my-5
-          aside
-            = render :partial => "layouts/templates/sidebar"
-      
-        .col-8.mt-5.ml-4
-          main.mr-4
-            = yield
+      .wrapper.d-flex.align-items-stretch
+        .container
+          .row.main
+            .col-3.ml-4.bg-light.text-center.my-5
+              aside
+                = render :partial => "layouts/templates/sidebar"
+          
+            .col-8.mt-5.ml-4
+              main.mr-4
+                = yield
 
     / ログインしていない
     - else
