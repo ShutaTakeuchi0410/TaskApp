@@ -20,7 +20,7 @@ class HomeController < ApplicationController
 
   # 締切日とプロジェクトが未定のタスク一覧
   def inbox
-      @tasks = current_user.tasks.where(deadline: nil).where(status: false).order(priority: "ASC")
+      @tasks = current_user.tasks.where(deadline: nil).where(status: false).where(project_id: nil).order(priority: "ASC")
   end
 
   # 締切日が今日以外で、プロジェクトの依存関係は問わないタスク一覧
