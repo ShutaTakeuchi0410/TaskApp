@@ -60,22 +60,7 @@ class TasksController < ApplicationController
     redirect_to home_path, notice: 'タスクを一件削除しました'
   end
 
-  # タスクの達成、未達成のステータスを変更する(Ajax)
-  def toggle
-    @task = Task.find(params[:id])
-    
-    # タスクのdoneの値をひっくり返す
-    @task.status = !@task.status
-    
-    # 空の場合は完了日時をカラムに追加し、存在する場合はnilにする(グラフ表示のため)
-    if @task.done_date.present?
-      @task.done_date = nil
-    else
-      @task.done_date = Date.current
-    end
 
-    @task.save
-  end
 
   private
 
