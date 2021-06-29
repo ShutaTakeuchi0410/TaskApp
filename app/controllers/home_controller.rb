@@ -2,6 +2,9 @@ class HomeController < ApplicationController
 
   # 締切日が今日でプロジェクトの依存関係は問わないタスク一覧
   def index
+    # 7日より前に完了済みのタスクを削除
+    current_user.tasks.keep_tasks_7days
+
     # 優先度が高い順(締め切りは今日だから)
     # 今日のタスク
     @tasks = current_user.tasks.where("deadline = ?", get_today_date).where(status: false).order(priority: "ASC")
