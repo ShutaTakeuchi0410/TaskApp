@@ -8,7 +8,8 @@ Rails.application.routes.draw do
   get 'home/inbox', to: 'home#inbox'
   get 'home/future', to: 'home#future'
   get 'home/done', to: 'home#done'
-  post 'home/toggle/:id', to: 'home#toggle'
+  post 'home/toggle/:id', to: 'home#toggle' #後で消すやつ
+  post 'tasks/toggle/:id', to: 'tasks#toggle'
   resources :tasks, except: [:index] do
     resources :comments, only: [:create, :destroy]
   end

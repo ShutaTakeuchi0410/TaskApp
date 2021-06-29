@@ -5,7 +5,7 @@ h5.mb-4.page-title インボックス
   table.table.table-borderless.table-sm
     tbody
       tr
-        td style="width: 5px;" = check_box_tag '', '', task.status, data: {remote: true, url: url_for(controller: :home, action: :toggle, id: task.id), method: "POST"}     
+        td style="width: 5px;" = check_box_tag '', '', task.status, data: {remote: true, url: url_for(controller: :tasks, action: :toggle, id: task.id), method: "POST"}     
         / タスク名
         th = link_to task.title, task_path(task), class: "task task-#{task.id}"
     
