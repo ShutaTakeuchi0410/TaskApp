@@ -35,6 +35,7 @@
               = link_to tag.name, tag_path(tag.id), class: "ml-3", :style=>"color:#6558F5;"
               - break if i == 2
 
-        / プロジェクト
-        - if task.project.present?
-          td.text-right = link_to task.project.name, project_path(task.project.id), :style=>"color:#6558F5;"
+        / プロジェクト(プロジェクト別タスク一覧では表示させないようにしている)
+        - if !defined?(@project)
+          - if task.project.present?
+            td.text-right = link_to task.project.name, project_path(task.project.id), :style=>"color:#6558F5;"
