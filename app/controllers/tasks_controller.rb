@@ -77,6 +77,20 @@ class TasksController < ApplicationController
   end
 
   def set_task
-    @task = Task.find(params[:id])
+    # @task = Task.find(params[:id]) #=> SELECT * FROM tasks WHERE id = xxx;
+
+    # ブログ: 下書き、公開という状態(is_published)がある
+    # @blog  = Blog.find(params[:id])
+    # @blog  = Blog.published.find(params[:id])
+
+    # # Scope
+    # scope :published, -> { where(is_published: true) }
+    # # 
+
+    # @tasks = find(params[:id])とすると、urlを変更した時に他の人のタスクも見れてしまう。
+    @task = current_user.tasks.find(params[:id]) #=> SELECT * FROM tasks WHERE id = xxx and user_id = ログインしているユーザーID;
+
+    # @tasks = Task.all
+    # @tasks = current_user.tasks
   end
 end

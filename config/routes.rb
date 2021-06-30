@@ -3,8 +3,7 @@ Rails.application.routes.draw do
     # deviseの階層を編集した場合は適宜pathを編集してください
     omniauth_callbacks: "users/omniauth_callbacks"
   }
-
-  get 'home', to: 'home#index'
+  get '/home', to: 'home#index'
   get 'home/inbox', to: 'home#inbox'
   get 'home/future', to: 'home#future'
   get 'home/done', to: 'home#done'
@@ -25,6 +24,5 @@ Rails.application.routes.draw do
 
   # グラフ
   get 'graph', to: 'graphs#index'
-
   root to: 'home#index'
 end
