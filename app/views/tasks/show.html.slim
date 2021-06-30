@@ -33,7 +33,7 @@
   
   / タグが存在する場合はチェックボックスを表示される
   - if current_user.tags.present?
-    = f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |b|
+    = f.collection_check_boxes(:tag_ids, current_user.tags.all, :id, :name) do |b|
       = b.label { b.check_box + b.text }
       br
 
