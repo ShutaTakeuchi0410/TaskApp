@@ -3,7 +3,7 @@ class HomeController < ApplicationController
   # 締切日が今日でプロジェクトの依存関係は問わないタスク一覧
   def index
     # 7日より前に完了済みのタスクを削除
-    current_user.tasks.keep_tasks_7days
+    # current_user.tasks.keep_tasks_7days
 
     # 優先度が高い順(締め切りは今日だから)
     # 今日のタスク
@@ -37,24 +37,6 @@ class HomeController < ApplicationController
       @value = 'deadline'
       @tasks = current_user.tasks.where("deadline > ?", get_today_date).where(status: false).order(deadline: "ASC")
     end
-  end
-
-  # タスクの達成、未達成のステータスを変更する(Ajax)
-  def toggle
-    # render nothing: true
-    @task = Task.find(params[:id])
-    # タスクのdoneの値をひっくり返す
-    # @task.status = !@task.status
-    @task.status = !@task.status
-    
-    # 空の場合は完了日時をカラムに追加し、存在する場合はnilにする(グラフ表示のため)
-    if @task.done_date.present?
-      @task.done_date = nil
-    else
-      @task.done_date = Date.current
-    end
-
-    @task.save
   end
 
   # 達成済みのタスクを一覧表示

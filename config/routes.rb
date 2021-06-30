@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get 'home/future', to: 'home#future'
   get 'home/done', to: 'home#done'
   
-  post 'home/toggle/:id', to: 'home#toggle' #後で消すやつ
+  # post 'home/toggle/:id', to: 'home#toggle' #後で消すやつ
   # タスク完了のチェックマークの処理(Ajax)
   post 'tasks/toggle/:id', to: 'tasks#toggle'
 

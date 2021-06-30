@@ -1,8 +1,9 @@
 class TasksController < ApplicationController
+  # privateでメソッドを作成している
+  before_action :set_task, only: %i[show update destroy toggle]
 
   # タスクの詳細画面であるが、変更フォームやコメントの一覧、コメントフォームが存在する
   def show
-    @task = Task.find(params[:id])
     # taskに紐づく中間テーブルの生成(これ無くても動いた)
     # @task.task_tags.buildx
 
@@ -42,9 +43,7 @@ class TasksController < ApplicationController
     
   end
 
-
   def update
-    @task = Task.find(params[:id])
     if @task.update(task_params)      
       redirect_to @task, notice: 'タスク内容を変更しました'
     else
@@ -55,32 +54,29 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    task = Task.find(params[:id])
-    task.destroy
+    @task.destroy
     redirect_to home_path, notice: 'タスクを一件削除しました'
   end
 
   # タスクの達成、未達成のステータスを変更する(Ajax)
   def toggle
-    @task = Task.find(params[:id])
-    
-    # タスクのdoneの値をひっくり返す
-    @task.status = !@task.status
-    
-    # 空の場合は完了日時をカラムに追加し、存在する場合はnilにする(グラフ表示のため)
-    if @task.done_date.present?
-      @task.done_date = nil
-    else
-      @task.done_date = Date.current
-      flash[:notice]  = 'タスクを実行完了！'
-    end
-
-    @task.save
+    @task.toggle!
   end
 
   private
 
   def task_params
-    params.require(:task).permit(:title, :deadline, :priority, :detail, :project_id, { :tag_ids=> [] })
+    params.require(:task).permit(
+      :title,
+      :deadline,
+      :priority,
+      :detail,
+      :project_id,
+      { tag_ids: [] }
+    )
+  end
+
+  def set_task
+    @task = Task.find(params[:id])
   end
 end
