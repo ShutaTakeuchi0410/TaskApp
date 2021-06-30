@@ -2,7 +2,8 @@
   <div class="card-body">
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <%= render "devise/shared/error_messages", resource: resource %>
+
+      <%= render "devise/shared/error_messages", resource: resource  %>
 
       <div class="field mt-5 mx-auto" style="width: 15rem;">
         <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'メールアドレス', class: 'form-control' %>
