@@ -1,26 +1,49 @@
-# taskapp
-hello
+# TaskApp
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+RubyonRailsの学習目的として作成したタスク管理アプリ。
 
-Things you may want to cover:
+## Get Started
 
-* Ruby version
+Docker Application is requirement for developing.
 
-* System dependencies
+```bash
+$ git clone git@github.com:ShutaTakeuchi0410/TaskApp.git
+$ cd TaskApp
+$ touch .env # And set some secret keys.
+$ docker-compose up
+$ rails db:migrate # In the rails container.
+```
 
-* Configuration
+## App Page
+Release
 
-* Database creation
+https://frozen-hollows-69945.herokuapp.com/
 
-* Database initialization
+Development
 
-* How to run the test suite
+https://localhost:3000
 
-* Services (job queues, cache servers, search engines, etc.)
+## ERD
 
-* Deployment instructions
+There is no dialogs but show my schema.rb for this application.
 
-* ...
-fff
+[db/schema.rb](https://github.com/ShutaTakeuchi0410/TaskApp/blob/main/db/schema.rb)
+
+## Test
+以下の入力でテスト用アカウントにログイン可能です。（テストデータ有）
+
+- `test@test.com` : email
+- `password` : password
+
+## Usage
+- インボックス、本日のタスク、今後のタスクでタスクを分別できる。
+- タスク追加後に詳細設定やコメントを残すことができる。
+- プロジェクトへの追加や、関連するタグを付属することができる。
+- 未実行のタスクを検索ができる。
+- 過去一週間内に実行済みのタスクを日付ごとにグラフで確認することができる。
+- ショートカットキーが使用できる
+  - Ctrl + N：タスクの追加
+  - Ctrl + P：プロジェクトの追加
+  - Ctrl + T：タグの追加
+  - Ctrl + F：検索
+- 毎朝９時に本日のタスクと締め切りを過ぎたタスク内容をメールで受信できる。
