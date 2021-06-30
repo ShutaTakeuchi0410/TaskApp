@@ -72,6 +72,7 @@ class TasksController < ApplicationController
       @task.done_date = nil
     else
       @task.done_date = Date.current
+      flash[:notice]  = 'タスクを実行完了！'
     end
 
     @task.save
