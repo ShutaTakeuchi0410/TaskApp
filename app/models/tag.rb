@@ -1,6 +1,7 @@
 class Tag < ApplicationRecord
   validates :name, presence: true
   validates :name, length: { maximum: 100 }
+  validates :name, uniqueness: true
 
   belongs_to :user
 
